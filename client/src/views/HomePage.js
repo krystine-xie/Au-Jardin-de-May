@@ -1,8 +1,6 @@
 import { React } from 'react';
 import {
-    Segment,
-    Sticky,
-    Container
+    Segment
 } from 'semantic-ui-react';
 
 import Header from '../components/Header';
