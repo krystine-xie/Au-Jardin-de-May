@@ -1,6 +1,7 @@
 import React from 'react'; 
 import styles from './HomePageBanner.module.css';
 import { Header, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const HomePageBanner = props => {
 
@@ -25,6 +26,8 @@ const HomePageBanner = props => {
                 <br />
                 <br />
                 <Button
+                    as={Link}
+                    to="/store"
                     size='huge'
                 >
                     SHOP NOW

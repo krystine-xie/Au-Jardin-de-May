@@ -3,7 +3,7 @@
 .showcase {
     align-items: center;
     /* background-color: ; */
-    background-image: url('../assets/flowers.jpg');
+    background-image: url('../../assets/flowers.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;

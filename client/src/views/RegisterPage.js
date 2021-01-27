@@ -5,12 +5,11 @@ import {
 
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
-import HomePageBanner from '../components/HomePageBanner/HomePageBanner.js';
-import Testimonials from '../components/Testimonials/Testimonials';
-import Footer from '../components/Footer/Footer';
 
-const HomePage = (props) => {
-    // let contextRef = createRef()
+import Footer from '../components/Footer/Footer';
+import RegisterForm from '../components/LoginForm/RegisterForm';
+
+const RegisterPage = (props) => {
 
     return (
         <div>
@@ -19,15 +18,16 @@ const HomePage = (props) => {
                 <NavBar />
             </Segment>
             <div>
-                <HomePageBanner />
-                <Testimonials />
-                <Footer />
+                <RegisterForm />
             </div>
-    
+
+            <Footer />
+
+
+        
         </div>
-            
     )
 
 }
 
-export default HomePage;
+export default RegisterPage;

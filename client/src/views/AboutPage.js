@@ -5,12 +5,10 @@ import {
 
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
-import HomePageBanner from '../components/HomePageBanner/HomePageBanner.js';
-import Testimonials from '../components/Testimonials/Testimonials';
 import Footer from '../components/Footer/Footer';
 
-const HomePage = (props) => {
-    // let contextRef = createRef()
+
+const AboutPage = (props) => {
 
     return (
         <div>
@@ -19,15 +17,14 @@ const HomePage = (props) => {
                 <NavBar />
             </Segment>
             <div>
-                <HomePageBanner />
-                <Testimonials />
-                <Footer />
-            </div>
-    
-        </div>
+                <h1>Salut, bienvenue au Jardin de May!</h1>
             
+            </div>
+            <Footer />
+        
+        </div>
     )
 
 }
 
-export default HomePage;
+export default AboutPage;

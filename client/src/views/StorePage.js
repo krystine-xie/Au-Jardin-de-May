@@ -5,12 +5,13 @@ import {
 
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
-import HomePageBanner from '../components/HomePageBanner/HomePageBanner.js';
-import Testimonials from '../components/Testimonials/Testimonials';
 import Footer from '../components/Footer/Footer';
 
-const HomePage = (props) => {
-    // let contextRef = createRef()
+import FilterBar from '../components/FilterBar/FilterBar';
+import styles from './StorePage.module.css';
+
+
+const StorePage = (props) => {
 
     return (
         <div>
@@ -18,16 +19,17 @@ const HomePage = (props) => {
                 <Header />
                 <NavBar />
             </Segment>
-            <div>
-                <HomePageBanner />
-                <Testimonials />
-                <Footer />
-            </div>
-    
-        </div>
             
+            <div className={styles.storeWrapper}>
+                <h1>Shop All Products</h1>
+                <FilterBar />
+            
+            </div>
+            <Footer />
+        
+        </div>
     )
 
 }
 
-export default HomePage;
+export default StorePage;
