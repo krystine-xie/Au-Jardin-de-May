@@ -8,6 +8,11 @@ import AboutPage from './views/AboutPage';
 import LoginPage from './views/LoginPage';
 import RegisterPage from './views/RegisterPage';
 import ContactPage from './views/ContactPage';
+import ProductPage from './views/ProductPage';
+import ShoppingCartPage from './views/ShoppingCartPage';
+import AccountPage from './views/AccountPage';
+
+
 
 
 function App() {
@@ -49,7 +54,28 @@ function App() {
           exact
           render={() => 
           <ContactPage />}
-        />                              
+        />
+        <Route
+            path="/collection/:id"
+            render={() =>
+            <ProductPage />
+            }
+          
+        />
+        <Route
+            path="/bag"
+            render={() =>
+            <ShoppingCartPage />
+            }
+          
+        />
+        <Route
+            path="/account"
+            render={() =>
+            <AccountPage />
+            }
+          
+        />                     
       </Router>
     </div>
   );

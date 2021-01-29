@@ -1,0 +1,13 @@
+.wrapper {
+    border: 1px dashed lightgray;
+    display: flex; 
+    justify-content: space-around;
+    margin: 30px auto;
+    padding: 15px;
+    width: 900px;
+}
+
+.detailWrap {
+    display: flex;
+    align-items: center;
+}

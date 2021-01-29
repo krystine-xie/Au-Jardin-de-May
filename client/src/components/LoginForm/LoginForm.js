@@ -16,7 +16,12 @@ const LoginForm = (props) => {
                 <Form.Field>
                     <input placeholder='Password' />
                 </Form.Field>
-                <Button type='submit'>LOG IN</Button>
+                <Button 
+                    as='a'
+                    href='/account'
+                >
+                    LOG IN
+                </Button>
             </Form>
 
             <p className={styles.noAccount}>Don't have an account? <Link to="/register" className={styles.link}>SIGN UP</Link></p>

@@ -1,3 +1,26 @@
 .storeWrapper {
     padding: 20px 150px 50px;
 }
+
+.innerWrapper {
+    /* border: 1px dashed lightblue; */
+    display: flex; 
+    justify-content: space-between;
+    margin: 0px auto;
+    width: 100%;
+}
+
+.productWrapper {
+    align-items: center;
+    /* border: 1px dashed lightpink; */
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    flex-wrap: wrap; 
+    flex-direction: row;
+}
+
+.aboutUs {
+    width: 40%;
+    margin: 50px auto;
+}
