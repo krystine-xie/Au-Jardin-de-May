@@ -17,6 +17,8 @@
   Krystine Xie: https://github.com/krystine-xie/
 
 ## Demos
+  ### Homepage 
+  ![](home.gif)
 
 ## Related Links
   * Semantic-UI-React: https://react.semantic-ui.com/
