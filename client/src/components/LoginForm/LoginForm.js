@@ -14,7 +14,7 @@ const LoginForm = (props) => {
                     <input placeholder='Your Email' />
                 </Form.Field>
                 <Form.Field>
-                    <input placeholder='Password' />
+                    <input type='password' placeholder='Password' />
                 </Form.Field>
                 <Button 
                     as='a'

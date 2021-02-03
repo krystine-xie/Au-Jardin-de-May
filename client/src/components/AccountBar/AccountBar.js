@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 
-export default class MenuExampleVerticalText extends Component {
+export default class AccountBar extends Component {
   state = { activeItem: 'closest' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -11,20 +11,19 @@ export default class MenuExampleVerticalText extends Component {
 
     return (
       <Menu text vertical size="large">
-        <Menu.Item header >FILTER BY</Menu.Item>
         <Menu.Item
-          name='CATEGORY'
-          active={activeItem === 'closest'}
+          name='MY ACCOUNT'
+          active={activeItem === 'myAccount'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name='COLOUR'
-          active={activeItem === 'mostComments'}
+          name='PAST ORDERS'
+          active={activeItem === 'pastOrders'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name='SIZE'
-          active={activeItem === 'mostPopular'}
+          name='ADDRESSES'
+          active={activeItem === 'addresses'}
           onClick={this.handleItemClick}
         />
       </Menu>

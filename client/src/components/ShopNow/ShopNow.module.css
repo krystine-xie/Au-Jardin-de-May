@@ -1,7 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@300;400&display=swap');
+
 .wrapper {
     display: flex;
     justify-content: space-around;
     padding: 20px;
     margin: 0px auto;
     width: 80%;
+    position: relative;
+    text-align: center;
+}
+
+.arrangements {
+    background-image: url('../../assets/arrangementLink.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 45%;
+    opacity: 0.7;
+}
+
+.succulents {
+    background-image: url('../../assets/succulentLink.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 500px;
+    opacity: 0.7;
+}
+
+.arrangements:hover, .succulents:hover {
+    opacity: 1.0
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.linkFont {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 30px
+}
+
+.link {
+    margin: 0px auto;
+    padding: 40px;
+    color: white;
+    width: 100%;
+}
+
+.link:hover {
+    color: white;
 }

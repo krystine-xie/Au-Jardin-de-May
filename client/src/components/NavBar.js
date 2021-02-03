@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 import { Input, Menu } from 'semantic-ui-react'
-import { NavLink, withRouter, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default class NavBar extends Component {
-  state = { activeItem: 'home' }
+
+  constructor(props) {
+      super(props);
+      this.state = {
+          activeItem: null
+      }
+  }
+
+  
+  // state = { activeItem: null }
 
   handleItemClick = (e, name) => {
     this.setState({ activeItem: name });
@@ -15,7 +24,7 @@ export default class NavBar extends Component {
     return (
       <Menu secondary color="white">
         <Menu.Item
-          as={NavLink} to="/"
+          as={NavLink} to="/" exact
           name='HOME'
           active={activeItem === 'home'}
           onClick={this.handleItemClick}
@@ -44,13 +53,13 @@ export default class NavBar extends Component {
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
           <Menu.Item
-            as={Link} to="/login"
+            as={NavLink} to="/login"
             name='LOGIN'
             active={activeItem === 'login'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            as={Link} to="/bag"
+            as={NavLink} to="/bag"
             icon='shopping bag'
             size='medium'
             active={activeItem === 'shopping bag'}
