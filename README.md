@@ -21,6 +21,7 @@
   ![](home.gif)
   
   ### Store Page
+  ![](store.gif)
   
   ### Login & Registration
   
