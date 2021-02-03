@@ -19,7 +19,11 @@
 ## Demos
   ### Homepage 
   ![](home.gif)
-
+  
+  ### Store Page
+  
+  ### Login & Registration
+  
 ## Related Links
   * Semantic-UI-React: https://react.semantic-ui.com/
   * Django REST Framework: https://www.django-rest-framework.org/
