@@ -18,10 +18,10 @@
 
 ## Demos
   ### Homepage 
-  ![](home.gif)
+  ![](gifs/home.gif)
   
   ### Store Page
-  ![](store.gif)
+  ![](gifs/store.gif)
   
   ### Login & Registration
   
