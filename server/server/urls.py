@@ -18,12 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('products/', include('products.urls')),
 
-
-    # REST FRAMEWORK URLS
-    path('api/accounts/', include('accounts.api.urls', 'accounts_api')),
+    #REST FRAMEWORK URLS 
+    path('api/accounts/', include('accounts.api.urls', 'accounts_api'))
 ]
-
-
