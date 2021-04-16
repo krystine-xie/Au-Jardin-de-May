@@ -7,7 +7,7 @@ import {
 import ProductDetail from '../components/ProductDetail/ProductDetail';
 
 const ProductPage = ({ match }) => {
-
+// test
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
