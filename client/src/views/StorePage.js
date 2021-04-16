@@ -1,4 +1,5 @@
-import { React } from 'react';
+import { React, useState, useEffect } from 'react';
+import axios from 'axios';
 
 import FilterBar from '../components/FilterBar/FilterBar';
 import ProductItem from '../components/ProductItem/ProductItem';
@@ -107,6 +108,17 @@ export const inventory = [{
 
 
 const StorePage = (props) => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        async function fetchProducts() {
+            const { data } = await axios.get('/api/products/');
+            setProducts(data);
+        }
+
+        fetchProducts();
+    }, [])
 
     return (
         <div>      
