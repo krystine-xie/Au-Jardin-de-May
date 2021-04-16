@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Segment } from 'semantic-ui-react';
 
 // Pages
 import HomePage from './views/HomePage';
@@ -12,13 +13,19 @@ import ProductPage from './views/ProductPage';
 import ShoppingCartPage from './views/ShoppingCartPage';
 import AccountPage from './views/AccountPage';
 
-
-
+import Header from './components/Header';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
+    
       <Router>
+        <Segment basic padded>
+          <Header />
+          <NavBar />
+        </Segment>
         <Route
           path="/"
           exact
@@ -75,7 +82,8 @@ function App() {
             <AccountPage />
             }
           
-        />                     
+        />       
+        <Footer />              
       </Router>
     </div>
   );

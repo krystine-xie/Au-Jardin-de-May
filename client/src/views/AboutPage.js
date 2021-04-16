@@ -1,12 +1,7 @@
 import { React } from 'react';
 import {
-    Segment,
     Container
 } from 'semantic-ui-react';
-
-import Header from '../components/Header';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer/Footer';
 
 import styles from './StorePage.module.css';
 
@@ -15,10 +10,6 @@ const AboutPage = (props) => {
 
     return (
         <div>
-            <Segment basic padded>
-                <Header />
-                <NavBar />
-            </Segment>
             <div className={styles.aboutUs}>
                 <Container textAlign='center'>
                     <h2>ABOUT US</h2>
@@ -37,7 +28,6 @@ const AboutPage = (props) => {
                 </Container> 
             </div>
             
-            <Footer />
         </div>
     )
 
