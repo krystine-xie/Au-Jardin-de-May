@@ -2,7 +2,7 @@ import { React } from 'react';
 import { Grid } from 'semantic-ui-react';
 
 const ShoppingCartPage = (props) => {
-
+    // test
     return (
         <Grid>
             <Grid.Row>
@@ -10,7 +10,6 @@ const ShoppingCartPage = (props) => {
                 <Grid.Column width={4}>Hello</Grid.Column>
             </Grid.Row>
         </Grid>
-            
     )
 
 }
