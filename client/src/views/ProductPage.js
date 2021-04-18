@@ -1,46 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux'; 
 import { Image, Button } from 'semantic-ui-react';
 import styles from './ProductPage.module.css';
 import {useParams} from 'react-router-dom';
 
+import { listProductItem } from '../actions/productActions';
+
+import LoaderSpin from '../components/LoaderSpin';
+import MessageAlert from '../components/MessageAlert';
+
 const ProductPage = (props) => {
-    const [product, setProduct] = useState([]);
     const {id} = useParams();
+    const dispatch = useDispatch(); 
+    const productItem = useSelector(state => state.productItem);
+    const { loading, error, product } = productItem;
 
     useEffect(() => {
-        async function fetchProduct() {
-            const { data } = await axios.get(`/api/products/${id}`);
-            setProduct(data);
-        }
-
-        fetchProduct();
-    }, [])
-
+        dispatch(listProductItem(id)); 
     
+    }, [dispatch]);
+
     return (
         <div>
-            {!product &&
-                <div>Loading ...</div>
-            }
-
-            {product &&
-                <div className={styles.wrapper}>
-                <div className={styles.innerWrapper}>
-                    <Image 
-                        size='medium' 
-                        src={product.image} 
-                    />
-                </div>
-                <div className={styles.detailWrap}>
-                    <div>
-                        <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                        <Button>${product.price} | ADD TO CART</Button>
+            {loading ? 
+                <LoaderSpin />
+                : error 
+                    ? <MessageAlert color="red">{error}</MessageAlert>
+                : (
+                    <div className={styles.wrapper}>
+                        <div className={styles.innerWrapper}>
+                            <Image 
+                                size='medium' 
+                                src={product.image} 
+                            />
+                        </div>
+                        <div className={styles.detailWrap}>
+                            <div>
+                                <h3>{product.name}</h3>
+                                <p>{product.description}</p>
+                                <Button>${product.price} | ADD TO CART</Button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        }
+                )
+            }
             
         </div>
     )
