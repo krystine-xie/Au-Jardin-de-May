@@ -5,9 +5,9 @@ import { inventory } from '../../views/StorePage';
 import styles from './ProductDetail.module.css';
 
 const ProductDetail = props => {
-    const {id} = props;
+    const { _id } = props;
 
-    const index = id - 1; 
+    const index = _id - 1; 
     const src = inventory[index].imageLink;
 
     return (
