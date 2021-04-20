@@ -9,6 +9,8 @@
   * Wireframe organised & built with Balsamiq
     * https://balsamiq.cloud/s1bqxr1/pn11ssh/r2278
   * Frontend built with React JS + Semantic UI for a consistent and responsive look and feel
+  * API engineered with Django REST Framerwork
+  * Implemented state management system of front-end through React-Redux
   * Client is able to register new use and login with validations implemented
   * Client is able to view and filter through products by category, colour and size
   * Client can save shipping + billing address and payment detail securely
