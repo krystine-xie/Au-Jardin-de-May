@@ -26,6 +26,10 @@ const ShoppingCartPage = ({ location, history }) => {
         dispatch(removeFromCart(id));
     };
 
+    const checkoutHandler = () => {
+        history.push(`/login?redirect=shipping`);
+    }
+
     return (
         <Segment>
             <Grid>
@@ -75,7 +79,7 @@ const ShoppingCartPage = ({ location, history }) => {
                                             <Grid.Column width={1}>
                                                 <Button
                                                     type='button'
-                                                    onClick={removeFromCartHandler}
+                                                    onClick={() => removeFromCartHandler(item.product)}
                                                 >
                                                     <i class="trash alternate icon"></i>
                                                 </Button>
@@ -101,7 +105,12 @@ const ShoppingCartPage = ({ location, history }) => {
                                     <h3>${cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2)}</h3>
                                 </List.Item>    
                                 <List.Item>
-									<Button>
+									<Button
+                                        type='button'
+                                        disabled={cartItems.length === 0}
+                                        fluid
+                                        onClick={checkoutHandler}
+                                    >
                                         Proceed to Checkout
                                     </Button>						
                                 </List.Item>          
