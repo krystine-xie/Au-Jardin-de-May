@@ -1,13 +1,18 @@
 .wrapper {
-    border: 1px dashed lightgray;
-    display: flex; 
-    justify-content: space-around;
-    margin: 30px auto;
-    padding: 15px;
-    width: 900px;
+  border: 1px dashed lightgray;
+  display: flex;
+  justify-content: space-around;
+  margin: 30px auto;
+  padding: 15px;
+  width: 900px;
 }
 
 .detailWrap {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+.dropdownQty {
+  margin-bottom: 5px;
+  padding: 5px;
 }

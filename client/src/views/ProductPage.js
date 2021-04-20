@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
-import { Image, Button } from 'semantic-ui-react';
+import { Image, Button} from 'semantic-ui-react';
 import styles from './ProductPage.module.css';
-import {useParams} from 'react-router-dom';
+import {withRouter, useParams} from 'react-router-dom';
 
 import { listProductItem } from '../actions/productActions';
 
 import LoaderSpin from '../components/LoaderSpin';
 import MessageAlert from '../components/MessageAlert';
 
-const ProductPage = (props) => {
+const ProductPage = ({ history }) => {
+    const [quantity, setQuantity] = useState(1);
+
     const {id} = useParams();
     const dispatch = useDispatch(); 
     const productItem = useSelector(state => state.productItem);
@@ -19,6 +21,11 @@ const ProductPage = (props) => {
         dispatch(listProductItem(id)); 
     
     }, [dispatch]);
+
+    const addToCartHandler = () => {
+        console.log(quantity);
+        history.push(`/cart/${id}?quantity=${quantity}`);
+    }
 
     return (
         <div>
@@ -38,7 +45,27 @@ const ProductPage = (props) => {
                             <div>
                                 <h3>{product.name}</h3>
                                 <p>{product.description}</p>
-                                <Button>${product.price} | ADD TO CART</Button>
+                                <h4>Quantity:</h4>
+                                <div>
+                                    { product.count_in_stock > 0 && (
+                                        <select className={styles.dropdownQty} name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+                                            {
+                                                [...Array(product.count_in_stock).keys()].map((x) => (
+                                                    <option key={x + 1} value={x + 1}>
+                                                        {x + 1}
+                                                    </option>
+                                                ))
+                                            }
+                                        </select>
+                                    )}
+                                </div>
+                            
+                                <Button
+                                    onClick={addToCartHandler}
+                                    disabled={product.count_in_stock === 0}
+                                    type='button'>
+                                    ${product.price} | ADD TO CART
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -50,4 +77,4 @@ const ProductPage = (props) => {
 
 }
 
-export default ProductPage;
+export default withRouter(ProductPage);

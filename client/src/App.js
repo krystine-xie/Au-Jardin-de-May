@@ -70,7 +70,7 @@ function App() {
           
         />
         <Route
-            path="/bag"
+            path="/cart/:id?"
             render={() =>
             <ShoppingCartPage />
             }

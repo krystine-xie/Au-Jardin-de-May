@@ -59,7 +59,7 @@ export default class NavBar extends Component {
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            as={NavLink} to="/bag"
+            as={NavLink} to="/cart"
             icon='shopping bag'
             size='medium'
             active={activeItem === 'shopping bag'}
