@@ -1,72 +1,79 @@
-import React, { Component } from 'react'
-import { Input, Menu } from 'semantic-ui-react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
+import { Input, Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
-export default class NavBar extends Component {
+import { logout } from '../actions/userActions';
 
-  constructor(props) {
-      super(props);
-      this.state = {
-          activeItem: null
-      }
+function NavBar() {
+  const [activeItem, setActiveItem] = useState(null);
+  const userLogin = useSelector(state => state.userLogin); 
+  const { userInfo } = userLogin
+
+  const handleItemClick = (name) => {
+    setActiveItem(name);
   }
 
-  
-  // state = { activeItem: null }
-
-  handleItemClick = (e, name) => {
-    this.setState({ activeItem: name });
-  }
-
-  render() {
-    const { activeItem } = this.state
-
-    return (
-      <Menu secondary color="white">
+  return (
+    <Menu secondary color="white">
         <Menu.Item
           as={NavLink} to="/" exact
           name='HOME'
           active={activeItem === 'home'}
-          onClick={this.handleItemClick}
+          onClick={() => handleItemClick('HOME')}
           link
         />
         <Menu.Item
           as={NavLink} to="/about"
           name='ABOUT'
           active={activeItem === 'about'}
-          onClick={this.handleItemClick}
+          onClick={() => handleItemClick('ABOUT')}
         />
         <Menu.Item
           as={NavLink} to="/store"
           name='STORE'
           active={activeItem === 'store'}
-          onClick={this.handleItemClick}
+          onClick={() => handleItemClick('STORE')}
         />
         <Menu.Item
           as={NavLink} to="/contact"
           name='CONTACT US'
-          active={activeItem === 'contact'}
-          onClick={this.handleItemClick}
+          active={activeItem === 'CONTACT'}
+          onClick={() => handleItemClick('CONTACT')}
         />
         <Menu.Menu position='right'>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
-          <Menu.Item
-            as={NavLink} to="/login"
-            name='LOGIN'
-            active={activeItem === 'login'}
-            onClick={this.handleItemClick}
-          />
+
+          {userInfo ? (
+            <Menu.Item
+              as={NavLink} to="/profile"
+              name={userInfo.name.toUpperCase()}
+              active={activeItem === userInfo.name.toString()}
+              onClick={() => handleItemClick(userInfo.name.toString())}
+              />
+          ) : (
+
+            <Menu.Item
+              as={NavLink} to="/login"
+              name='LOGIN'
+              active={activeItem === 'login'}
+              onClick={() => handleItemClick('LOGIN')}
+            />
+
+          )}
+
           <Menu.Item
             as={NavLink} to="/cart"
             icon='shopping bag'
             size='medium'
             active={activeItem === 'shopping bag'}
-            onClick={this.handleItemClick}
+            onClick={() => handleItemClick('SHOPPING BAG')}
           />
         </Menu.Menu>
       </Menu>
-    )
-  }
+  )
 }
+
+export default NavBar
