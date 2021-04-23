@@ -77,7 +77,7 @@ function App() {
           
         />
         <Route
-            path="/account"
+            path="/profile"
             render={() =>
             <AccountPage />
             }

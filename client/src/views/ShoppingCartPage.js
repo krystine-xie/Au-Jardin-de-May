@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Image, Form, Button, Card, List, Segment } from 'semantic-ui-react';
+import { Grid, Image, Button, Card, List, Segment } from 'semantic-ui-react';
 import {withRouter, useParams, Link} from 'react-router-dom';
 import styles from './ProductPage.module.css';
 
