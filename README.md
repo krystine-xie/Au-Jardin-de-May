@@ -12,6 +12,7 @@
   * API engineered with Django REST Framerwork
   * Implemented state management system of front-end through React-Redux
   * Client is able to register new use and login with validations implemented
+  * Client is able to view and update their profile details & their orders
   * Client is able to view and filter through products by category, colour and size
   * Client can save shipping + billing address and payment detail securely
 
