@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
-import { Input, Menu } from 'semantic-ui-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Input, Menu, Dropdown } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 import { logout } from '../actions/userActions';
@@ -10,8 +10,14 @@ function NavBar() {
   const userLogin = useSelector(state => state.userLogin); 
   const { userInfo } = userLogin
 
+  const dispatch = useDispatch();
+
   const handleItemClick = (name) => {
     setActiveItem(name);
+  }
+
+  const handleLogout = () => {
+    dispatch(logout());
   }
 
   return (
@@ -47,12 +53,19 @@ function NavBar() {
           </Menu.Item>
 
           {userInfo ? (
-            <Menu.Item
-              as={NavLink} to="/profile"
-              name={userInfo.name.toUpperCase()}
-              active={activeItem === userInfo.name.toString()}
-              onClick={() => handleItemClick(userInfo.name.toString())}
-              />
+            <Menu vertical>
+              <Dropdown item text={userInfo.name.toUpperCase()}>
+                <Dropdown.Menu>
+                  <Dropdown.Item>Profile</Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => handleLogout()}
+                  >
+                    Log Out
+                  </Dropdown.Item>
+                </Dropdown.Menu>  
+              </Dropdown>
+            </Menu>
+
           ) : (
 
             <Menu.Item
