@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Segment, Grid } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import styles from './ProductPage.module.css';
-import { getUserDetails } from '../actions/userActions';
+import { getUserDetails, updateUserDetails } from '../actions/userActions';
+import { USER_PROFILE_UPDATE_RESET } from '../constants/userConstants'
 
 import MessageAlert from '../components/MessageAlert';
 import LoaderSpin from '../components/LoaderSpin';
@@ -24,12 +25,21 @@ const AccountPage = ({history}) => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin; 
 
+    const userUpdate = useSelector(state => state.userUpdate);
+    const { success } = userUpdate;
+
     useEffect(() => {
         if (!user) {
             history.push('/login')
         } else {
-            // checks if user details have been fetched yet
-            if (!user || !user.name) {
+            // checks if user details have been fetched yet or if update was successful!
+            if (!user || !user.name || success) {
+                // makes sure we clear our previous state first 
+                dispatch({
+                    type: USER_PROFILE_UPDATE_RESET
+                })
+
+                // fetches the update user details
                 dispatch(getUserDetails('profile'))
             } else {
                 setName(user.name)
@@ -37,7 +47,7 @@ const AccountPage = ({history}) => {
             }
         }
 
-    }, [dispatch, history, userInfo, user])
+    }, [dispatch, history, userInfo, user, success])
 
     const updateHandler = (e) => {
         e.preventDefault(); 
@@ -45,7 +55,12 @@ const AccountPage = ({history}) => {
         if (password !== confirmPassword) {
             setMessage('Passwords do not match!')
         } else {
-            console.log('Updating profile...')
+            dispatch(updateUserDetails({
+                'id':user._id,
+                'name': name,
+                'email': email,
+                'password': password
+            }));
         }
     }
 
@@ -56,6 +71,9 @@ const AccountPage = ({history}) => {
                     <Grid.Row>
                         <Grid.Column width={4}>
                             <h2>USER PROFILE</h2>
+                            {message && <MessageAlert color='red'>{message}</MessageAlert>}
+                            {error && <MessageAlert color='red'>{error}</MessageAlert>}
+                            {loading && <LoaderSpin />}
                             <Form
                                 onSubmit={updateHandler}
                             
@@ -80,7 +98,6 @@ const AccountPage = ({history}) => {
                                 </Form.Field>
                                 <Form.Field>
                                     <input 
-                                        required
                                         placeholder="Password"
                                         type="password"
                                         value={password}
@@ -89,7 +106,6 @@ const AccountPage = ({history}) => {
                                 </Form.Field>
                                 <Form.Field>
                                     <input 
-                                        required
                                         placeholder="Confirm Password"
                                         type="password"
                                         value={confirmPassword}
