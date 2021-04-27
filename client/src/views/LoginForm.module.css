@@ -1,24 +1,29 @@
 .loginWrapper {
-    margin: 20px auto 50px;
-    width: 400px;
+  margin: 20px auto 50px;
+  width: 400px;
+}
+
+.shippingWrapper {
+  margin: 20px auto 50px;
+  width: 600px;
 }
 
 .noAccount {
-    margin: 50px;
+  margin: 50px;
 }
 
 .header {
-    margin: 50px;
+  margin: 50px;
 }
 
 .link {
-    color: black;
-    font-weight: 700;
-    text-decoration: underline;
+  color: black;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .link:hover {
-    color: grey;
-    font-weight: 700;
-    text-decoration: underline;
+  color: grey;
+  font-weight: 700;
+  text-decoration: underline;
 }

@@ -12,7 +12,9 @@ import ContactPage from './views/ContactPage';
 import ProductPage from './views/ProductPage';
 import ShoppingCartPage from './views/ShoppingCartPage';
 import AccountPage from './views/AccountPage';
+import ShippingPage from './views/ShippingPage';
 
+// Components
 import Header from './components/Header';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer/Footer';
@@ -82,7 +84,14 @@ function App() {
             <AccountPage />
             }
           
-        />       
+        />    
+        <Route
+            path="/shipping"
+            render={() =>
+            <ShippingPage />
+            }
+          
+        />          
         <Footer />              
       </Router>
     </div>

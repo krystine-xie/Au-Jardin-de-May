@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
-import { withRouter, Link} from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { login } from '../actions/userActions';
 
 import MessageAlert from '../components/MessageAlert';

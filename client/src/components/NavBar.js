@@ -56,7 +56,10 @@ function NavBar() {
             <Menu vertical>
               <Dropdown item text={userInfo.name.toUpperCase()}>
                 <Dropdown.Menu>
-                  <Dropdown.Item>Profile</Dropdown.Item>
+                  <Dropdown.Item
+                    as={NavLink} to="/profile"
+                  >Profile
+                  </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() => handleLogout()}
                   >
