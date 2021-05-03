@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { Button, Grid, Image, Card, List, Segment } from 'semantic-ui-react';
+import { Button, Grid, Image, Card, List, Divider } from 'semantic-ui-react';
 
 import CheckoutProgress from '../components/CheckoutProgress';
 import MessageAlert from '../components/MessageAlert';
@@ -11,6 +11,11 @@ import styles from './LoginForm.module.css';
 function PlaceOrderPage() {
     const cart = useSelector(state => state.cart)
     const { shippingAddress, paymentMethod, cartItems } = cart; 
+
+    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
+    cart.shippingPrice = (cart.itemsPrice > 60 ? 0 : 10).toFixed(2);
+    cart.tax = Number((cart.itemsPrice * 0.0725)).toFixed(2);
+    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.tax)).toFixed(2);
 
 
 
@@ -35,15 +40,14 @@ function PlaceOrderPage() {
                                     {'    '} {cart.shippingAddress.country}
                                 </p>
                             </List.Item>
-                            <hr></hr>
+                            <Divider />
                             <List.Item>
                                 <h2>PAYMENT METHOD:</h2>
                                 <p>
                                     <strong>Payment Selected: </strong>
-                                    {cart.paymentMethod.paymentMethod}
                                 </p>
                             </List.Item>
-                            <hr />
+                            <Divider />
                             <List.Item>
                                 <h2>ORDER ITEMS:</h2>
                                 { cart.cartItems.length === 0 ? <MessageAlert color="red">Your cart is empty!</MessageAlert> : (
@@ -53,7 +57,7 @@ function PlaceOrderPage() {
                                                 <Grid celled>
                                                     <Grid.Row>
                                                         <Grid.Column width={4}>
-                                                            <Image size="tiny" src={item.image} alt={item.name} rounded centered />
+                                                            <Image size="small" src={item.image} alt={item.name} rounded centered />
                                                         </Grid.Column>
                                                         <Grid.Column width={6}>
                                                             <Link to={`/collection/${item.id}`}><h3>{item.name}</h3></Link> 
@@ -73,20 +77,50 @@ function PlaceOrderPage() {
                             
                             }
                             </List.Item>
-            
-                            
-                            
-                            
+                                      
                         </List>
                         
                     </Grid.Column>
 
-                    <Grid.Column width={4}>
+                    <Grid.Column width={5}>
                         <Card fluid>
                             <h2>ORDER SUMMARY</h2>
                             <List>
                                 <List.Item>
-                                
+                                    <Grid celled>
+                                        <Grid.Row>
+                                            <Grid.Column width={8}>
+                                                <h3>ITEM:</h3>
+                                            </Grid.Column>
+                                            <Grid.Column width={8}> 
+                                                <h4>${cart.itemsPrice}</h4> 
+                                            </Grid.Column>      
+                                        </Grid.Row>
+                                         <Grid.Row>
+                                            <Grid.Column width={8}>
+                                                <h3>SHIPPING:</h3>
+                                            </Grid.Column>
+                                            <Grid.Column width={8}> 
+                                                <h4>${cart.shippingPrice}</h4> 
+                                            </Grid.Column>      
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column width={8}>
+                                                <h3>TAX:</h3>
+                                            </Grid.Column>
+                                            <Grid.Column width={8}> 
+                                                <h4>${cart.tax}</h4> 
+                                            </Grid.Column>      
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column width={8}>
+                                                <h3>TOTAL:</h3>
+                                            </Grid.Column>
+                                            <Grid.Column width={8}> 
+                                                <h4>${cart.totalPrice}</h4> 
+                                            </Grid.Column>      
+                                        </Grid.Row>
+                                    </Grid>         
                                 </List.Item>
                                 <List.Item>
                                         <Button

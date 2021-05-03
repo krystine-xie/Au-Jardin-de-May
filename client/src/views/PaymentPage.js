@@ -44,8 +44,8 @@ function PaymentPage({ history }) {
                     label='Credit Card'
                     control='input'
                     type='radio'
-                    value='Credit Card'
                     name='paymentMethod'
+                    value='Credit Card'
                     onChange={(e) => setPaymentMethod(e.target.value)}
                 />
                 <Button 
