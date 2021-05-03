@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 
-import MessageAlert from '../components/MessageAlert';
-import LoaderSpin from '../components/LoaderSpin';
+import CheckoutProgress from '../components/CheckoutProgress';
 import styles from './LoginForm.module.css';
 import { saveShippingAddress } from '../actions/cartActions';
 
@@ -29,6 +28,7 @@ function ShippingPage({ history }) {
 
     return (
         <div>
+            <CheckoutProgress step1 step2 />
             <div className={styles.shippingWrapper}>
             <h1 className={styles.header}>ENTER SHIPPING ADDRESS</h1>
             <Form 
