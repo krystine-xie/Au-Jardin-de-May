@@ -8,13 +8,53 @@ import styles from './LoginForm.module.css';
 import { savePaymentMethod } from '../actions/cartActions';
 
 
-function PaymentPage() {
+function PaymentPage({ history }) {
+    const [paymentMethod, setPaymentMethod] = useState('PayPal');
     const cart = useSelector(state => state.cart)
-    const { savePaymentMethod } = cart; 
+    const { shippingAddress } = cart; 
+
+    const dispatch = useDispatch();
+
+
+    if (!shippingAddress.address) {
+        history.push('/shipping');
+    }
+
+    const paymentHandler = (e) => {
+        e.preventDefault();
+        // dispatch(savePaymentMethod({paymentMethod})); 
+        history.push('/placeorder');
+    }
 
     return (
         <div>
-            
+            <CheckoutProgress step1 step2 step3 />
+            <Form onSubmit={paymentHandler}>
+                <h2>SELECT PAYMENT METHOD:</h2>
+                <Form.Field
+                    label='PayPal'
+                    control='input'
+                    type='radio'
+                    name='paymentMethod'
+                    value='PayPal'
+                    checked
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                />
+                <Form.Field
+                    label='Credit Card'
+                    control='input'
+                    type='radio'
+                    value='Credit Card'
+                    name='paymentMethod'
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                />
+                <Button 
+                    type="submit"
+                >
+                    PROCEED TO PLACE ORDER
+                </Button>
+        
+            </Form>
         </div>
     )
 }

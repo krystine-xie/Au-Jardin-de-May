@@ -13,6 +13,8 @@ import ProductPage from './views/ProductPage';
 import ShoppingCartPage from './views/ShoppingCartPage';
 import AccountPage from './views/AccountPage';
 import ShippingPage from './views/ShippingPage';
+import PaymentPage from './views/PaymentPage';
+
 
 // Components
 import Header from './components/Header';
@@ -91,7 +93,14 @@ function App() {
             <ShippingPage />
             }
           
-        />          
+        />
+        <Route
+            path="/payment"
+            render={() =>
+            <PaymentPage />
+            }
+          
+        />            
         <Footer />              
       </Router>
     </div>
