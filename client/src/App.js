@@ -14,7 +14,7 @@ import ShoppingCartPage from './views/ShoppingCartPage';
 import AccountPage from './views/AccountPage';
 import ShippingPage from './views/ShippingPage';
 import PaymentPage from './views/PaymentPage';
-
+import PlaceOrderPage from './views/PlaceOrderPage';
 
 // Components
 import Header from './components/Header';
@@ -100,7 +100,14 @@ function App() {
             <PaymentPage />
             }
           
-        />            
+        /> 
+        <Route
+          path="/placeorder"
+          render={() =>
+          <PlaceOrderPage />
+          }
+      
+    />                   
         <Footer />              
       </Router>
     </div>

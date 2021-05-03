@@ -22,7 +22,7 @@ function PaymentPage({ history }) {
 
     const paymentHandler = (e) => {
         e.preventDefault();
-        // dispatch(savePaymentMethod({paymentMethod})); 
+        dispatch(savePaymentMethod({paymentMethod})); 
         history.push('/placeorder');
     }
 
@@ -59,4 +59,4 @@ function PaymentPage({ history }) {
     )
 }
 
-export default PaymentPage
+export default withRouter(PaymentPage);
