@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { Button, Grid, Image, Card, List, Divider } from 'semantic-ui-react';
@@ -6,7 +6,15 @@ import { Button, Grid, Image, Card, List, Divider } from 'semantic-ui-react';
 import CheckoutProgress from '../components/CheckoutProgress';
 import MessageAlert from '../components/MessageAlert';
 
-function PlaceOrderPage() {
+import { createOrder } from '../actions/orderActions';
+
+function PlaceOrderPage({ history }) {
+
+    const createOrder = useSelector(state => state.createOrder);
+    const { order, error, success } = createOrder; 
+
+    const dispatch = useDispatch();
+
     const cart = useSelector(state => state.cart)
     const { shippingAddress, paymentMethod, cartItems } = cart; 
 
@@ -15,11 +23,28 @@ function PlaceOrderPage() {
     cart.tax = Number((cart.itemsPrice * 0.0725)).toFixed(2);
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.tax)).toFixed(2);
 
+    if (!paymentMethod) {
+        history.push('/payment');
+    }
 
+    useEffect(() => {
+        if (success) {
+            history.push(`/order/${order._id}`)
+        }
+    }, [success, history])
 
     const placeOrderHandler = (e) => {
         e.preventDefault();
-        console.log('Order Placed!');
+        dispatch(createOrder({
+            orderItems: cartItems, 
+            shippingAddress: shippingAddress,
+            paymentMethod: paymentMethod, 
+            itemsPrice: cart.itemsPrice,
+            tax: cart.tax, 
+            shippingPrice: cart.shippingAddress,
+            totalPrice: cart.totalPrice,  
+        }));
+
     }
 
     return (
@@ -43,7 +68,7 @@ function PlaceOrderPage() {
                                 <h2>PAYMENT METHOD:</h2>
                                 <p>
                                     <strong>Payment Selected: </strong>
-                                    {paymentMethod.paymentMethod}
+                                    {paymentMethod}
                                 </p>
                             </List.Item>
                             <Divider />
@@ -122,15 +147,15 @@ function PlaceOrderPage() {
                                     </Grid>         
                                 </List.Item>
                                 <List.Item>
-                                        <Button
-                                            type='button'
-                                            disabled={cartItems.length === 0}
-                                            fluid
-                                            onClick={placeOrderHandler}
-                                        >
-                                            CONFIRM ORDER
-                                        </Button>						
-                                    </List.Item>      
+                                    <Button
+                                        type='button'
+                                        disabled={cartItems.length === 0}
+                                        fluid
+                                        onClick={placeOrderHandler}
+                                    >
+                                        CONFIRM ORDER
+                                    </Button>						
+                                </List.Item>      
                             </List>
 
                         
@@ -144,4 +169,4 @@ function PlaceOrderPage() {
     )
 }
 
-export default PlaceOrderPage
+export default withRouter(PlaceOrderPage);
