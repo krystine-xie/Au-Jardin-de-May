@@ -6,8 +6,6 @@ import { Button, Grid, Image, Card, List, Divider } from 'semantic-ui-react';
 import CheckoutProgress from '../components/CheckoutProgress';
 import MessageAlert from '../components/MessageAlert';
 
-import styles from './LoginForm.module.css';
-
 function PlaceOrderPage() {
     const cart = useSelector(state => state.cart)
     const { shippingAddress, paymentMethod, cartItems } = cart; 
@@ -45,6 +43,7 @@ function PlaceOrderPage() {
                                 <h2>PAYMENT METHOD:</h2>
                                 <p>
                                     <strong>Payment Selected: </strong>
+                                    {paymentMethod.paymentMethod}
                                 </p>
                             </List.Item>
                             <Divider />
