@@ -16,6 +16,9 @@ def addOrderItems(request):
     data = request.data
 
     orderItems = data['orderItems']
+    print(orderItems)
+    print(data['shippingAddress'])
+    # print(data['shippingPrice']) 
 
     if orderItems and len(orderItems) == 0:
         message = {'detail': 'No Order Items Listed'}
@@ -26,7 +29,7 @@ def addOrderItems(request):
         order = Order.objects.create(
             user = user, 
             payment_method = data['paymentMethod'], 
-            shipping_price = data['shippingPrice'], 
+            shipping_price = data['shippingPrice'], #BUG TO FIX 
             tax_price = data['tax'], 
             total_price = data['totalPrice']
         )
@@ -38,9 +41,9 @@ def addOrderItems(request):
             city = data['shippingAddress']['city'],
             state = data['shippingAddress']['state'],
             zip_code = data['shippingAddress']['zipCode'], 
-            country = data['shippingAddress']['country']
+            country = data['shippingAddress']['country'],
         )
-
+        
         # create order items and set order to order item relationship
         for i in orderItems:
             product = Product.objects.get(_id=i['product'])
@@ -49,7 +52,7 @@ def addOrderItems(request):
                 order=order, 
                 name=product.name,
                 quantity=i['quantity'],
-                price=['price'], 
+                price=i['price'], 
                 image=product.image
             )
 
