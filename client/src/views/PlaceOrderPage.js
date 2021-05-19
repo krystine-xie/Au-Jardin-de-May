@@ -47,7 +47,7 @@ function PlaceOrderPage({ history }) {
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
         tax: cart.tax,
-        shippingPrice: cart.shippingAddress,
+        shippingPrice: cart.shippingPrice,
         totalPrice: cart.totalPrice,
       })
     );
