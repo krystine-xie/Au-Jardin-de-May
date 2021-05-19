@@ -5,6 +5,7 @@ import { Button, Form } from "semantic-ui-react";
 
 import CheckoutProgress from "../components/CheckoutProgress";
 import styles from "./LoginForm.module.css";
+import states from "../constants/states";
 import { saveShippingAddress } from "../actions/cartActions";
 
 function ShippingPage({ history }) {
@@ -13,6 +14,7 @@ function ShippingPage({ history }) {
 
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
+  const [state, setState] = useState(shippingAddress.state);
   const [zipCode, setZipCode] = useState(shippingAddress.zipCode);
   const [country, setCountry] = useState(shippingAddress.country);
 
@@ -49,6 +51,20 @@ function ShippingPage({ history }) {
               value={city ? city : ""}
               onChange={(e) => setCity(e.target.value)}
             />
+          </Form.Field>
+          <Form.Field>
+            <select
+              name="state"
+              value={state ? state : ""}
+              onChange={(e) => setState(e.target.value)}
+            >
+              <option value="" disabled selected>
+                Select State
+              </option>
+              {states.map((state) => {
+                return <option value={state}>{state}</option>;
+              })}
+            </select>
           </Form.Field>
           <Form.Field>
             <input
