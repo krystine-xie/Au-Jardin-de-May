@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Input, Menu, Dropdown } from "semantic-ui-react";
+import { Menu, Dropdown } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import SearchBar from "./SearchBar";
 

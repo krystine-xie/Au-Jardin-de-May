@@ -27,27 +27,29 @@ function PaymentPage({ history }) {
   return (
     <div>
       <CheckoutProgress step1 step2 step3 />
-      <Form onSubmit={paymentHandler}>
-        <h2>SELECT PAYMENT METHOD:</h2>
-        <Form.Field
-          label="PayPal"
-          control="input"
-          type="radio"
-          name="paymentMethod"
-          value="PayPal"
-          checked
-          onChange={(e) => setPaymentMethod(e.target.value)}
-        />
-        <Form.Field
-          label="Credit Card"
-          control="input"
-          type="radio"
-          name="paymentMethod"
-          value="Credit Card"
-          onChange={(e) => setPaymentMethod(e.target.value)}
-        />
-        <Button type="submit">PROCEED TO PLACE ORDER</Button>
-      </Form>
+      <div className={styles.paymentWrapper}>
+        <Form onSubmit={paymentHandler}>
+          <h2>SELECT PAYMENT METHOD:</h2>
+          <Form.Field
+            label="PayPal"
+            control="input"
+            type="radio"
+            name="paymentMethod"
+            value="PayPal"
+            checked
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          />
+          <Form.Field
+            label="Credit Card"
+            control="input"
+            type="radio"
+            name="paymentMethod"
+            value="Credit Card"
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          />
+          <Button type="submit">PROCEED TO PLACE ORDER</Button>
+        </Form>
+      </div>
     </div>
   );
 }
