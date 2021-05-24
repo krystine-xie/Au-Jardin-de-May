@@ -64,8 +64,8 @@ function PlaceOrderPage({ history }) {
                 <h2>SHIPPING ADDRESS:</h2>
                 <p>
                   <strong>Ship To: </strong>
-                  {cart.shippingAddress.address}, {cart.shippingAddress.city},
-                  {cart.shippingAddress.state} {"    "}{" "}
+                  {cart.shippingAddress.address}, {cart.shippingAddress.city}
+                  {"    "} ,{cart.shippingAddress.state1} {"    "}{" "}
                   {cart.shippingAddress.zipCode}
                   {"    "} {cart.shippingAddress.country}
                 </p>

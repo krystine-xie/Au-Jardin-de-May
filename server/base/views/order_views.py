@@ -16,9 +16,7 @@ def addOrderItems(request):
     data = request.data
 
     orderItems = data['orderItems']
-    print(orderItems)
-    print(data['shippingAddress'])
-    # print(data['shippingPrice']) 
+    print("request: ", request.user)
 
     if orderItems and len(orderItems) == 0:
         message = {'detail': 'No Order Items Listed'}
@@ -39,7 +37,7 @@ def addOrderItems(request):
             order = order, 
             address = data['shippingAddress']['address'],
             city = data['shippingAddress']['city'],
-            state = data['shippingAddress']['state'],
+            state = data['shippingAddress']['state1'],
             zip_code = data['shippingAddress']['zipCode'], 
             country = data['shippingAddress']['country'],
         )

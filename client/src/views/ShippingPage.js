@@ -14,7 +14,7 @@ function ShippingPage({ history }) {
 
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
-  const [state, setState] = useState(shippingAddress.state);
+  const [state1, setState1] = useState(shippingAddress.state1);
   const [zipCode, setZipCode] = useState(shippingAddress.zipCode);
   const [country, setCountry] = useState(shippingAddress.country);
 
@@ -22,8 +22,9 @@ function ShippingPage({ history }) {
 
   const shippingHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, zipCode, country }));
+    dispatch(saveShippingAddress({ address, city, zipCode, state1, country }));
     history.push("/payment");
+    // console.log(state);
   };
 
   return (
@@ -53,16 +54,16 @@ function ShippingPage({ history }) {
             />
           </Form.Field>
           <Form.Field>
-            <select
-              name="state"
-              value={state ? state : ""}
-              onChange={(e) => setState(e.target.value)}
-            >
+            <select name="state" onChange={(e) => setState1(e.target.value)}>
               <option value="" disabled selected>
                 Select State
               </option>
-              {states.map((state) => {
-                return <option value={state}>{state}</option>;
+              {states.map((s, key) => {
+                return (
+                  <option key={key} value={s}>
+                    {s}
+                  </option>
+                );
               })}
             </select>
           </Form.Field>
