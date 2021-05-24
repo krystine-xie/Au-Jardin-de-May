@@ -16,7 +16,6 @@ def addOrderItems(request):
     data = request.data
 
     orderItems = data['orderItems']
-    print("request: ", request.user)
 
     if orderItems and len(orderItems) == 0:
         message = {'detail': 'No Order Items Listed'}
