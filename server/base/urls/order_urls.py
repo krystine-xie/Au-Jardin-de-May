@@ -3,5 +3,6 @@ from base.views import order_views as views
 
 
 urlpatterns = [
-    path('add/', views.addOrderItems, name='add-orders')
+    path('add/', views.addOrderItems, name='add-orders'),
+    path('<str:pk>/', views.getOrderById, name='user-order')
 ]

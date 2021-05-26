@@ -1,5 +1,6 @@
 .wrapper {
-  border: 1px dashed lightgray;
+  border: 2px solid lightgray;
+  border-radius: 3px;
   display: flex;
   justify-content: space-around;
   margin: 30px auto;
