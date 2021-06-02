@@ -34,9 +34,9 @@ def getUserProfile(request):
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def getRoutes(request):
-    return Response('Hello')
+# @api_view(['GET'])
+# def getRoutes(request):
+#     return Response('Hello')
 
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
@@ -75,8 +75,8 @@ def updateUser(request):
 
     data = request.data
 
-    user.first_name = data['name'], 
-    user.username = data['email'],
+    user.first_name = data['name'] 
+    user.username = data['email']
     user.email = data['email']
 
     if data['password'] != '':
