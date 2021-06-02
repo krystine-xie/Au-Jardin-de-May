@@ -22,3 +22,17 @@
   margin: 0px auto;
   width: 90%;
 }
+
+.category {
+  color: darkblue;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.quantitySelect {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px auto 20px;
+  width: 40%;
+}

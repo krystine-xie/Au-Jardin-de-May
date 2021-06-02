@@ -75,7 +75,7 @@ def getOrderById(request, pk):
             return Response(serializer.data)
 
         else: 
-            Response({'detail': 'Not authorised to view this order'}, status=status.HTTP_400_BAD_REQUEST)
+            Response({'detail': 'Not authorized to view this order'}, status=status.HTTP_400_BAD_REQUEST)
 
     except:
         return Response({'detail': 'Order does not exist!'}, status=status.HTTP_400_BAD_REQUEST)

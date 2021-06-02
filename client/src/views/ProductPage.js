@@ -39,10 +39,11 @@ const ProductPage = ({ history }) => {
           </div>
           <div className={styles.detailWrap}>
             <div>
+              <p className={styles.category}>{product.category}</p>
               <h3>{product.name}</h3>
               <p>{product.description}</p>
-              <h4>Quantity:</h4>
-              <div>
+              <div className={styles.quantitySelect}>
+                <h4>Quantity:</h4>
                 {product.count_in_stock > 0 && (
                   <select
                     className={styles.dropdownQty}
@@ -61,7 +62,7 @@ const ProductPage = ({ history }) => {
 
               <Button
                 onClick={addToCartHandler}
-                disabled={product.count_in_stock === 0}
+                disabled={product.count_in_stock <= 0}
                 type="button"
               >
                 ${product.price} | ADD TO CART
