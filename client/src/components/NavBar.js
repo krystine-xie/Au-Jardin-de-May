@@ -6,6 +6,8 @@ import SearchBar from "./SearchBar";
 
 import { logout } from "../actions/userActions";
 
+import styles from "./NavBar.module.css";
+
 function NavBar() {
   const [activeItem, setActiveItem] = useState(null);
 
@@ -55,9 +57,9 @@ function NavBar() {
         onClick={() => handleItemClick("CONTACT")}
       />
       <Menu.Menu position="right">
-        <Menu.Item>
+        <div className={styles.searchBar}>
           <SearchBar />
-        </Menu.Item>
+        </div>
 
         {userInfo ? (
           <Menu vertical>
