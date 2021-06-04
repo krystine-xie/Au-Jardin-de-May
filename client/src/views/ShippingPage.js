@@ -54,8 +54,12 @@ function ShippingPage({ history }) {
             />
           </Form.Field>
           <Form.Field>
-            <select name="state" onChange={(e) => setState1(e.target.value)}>
-              <option value="" disabled selected>
+            <select
+              name="state"
+              onChange={(e) => setState1(e.target.value)}
+              defaultValue={state1 ? state1 : ""}
+            >
+              <option value="" disabled>
                 Select State
               </option>
               {states.map((s, key) => {

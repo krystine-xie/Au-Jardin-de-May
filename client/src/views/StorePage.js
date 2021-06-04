@@ -6,6 +6,7 @@ import FilterBar from "../components/FilterBar/FilterBar";
 import LoaderSpin from "../components/LoaderSpin";
 import MessageAlert from "../components/MessageAlert";
 import ProductItem from "../components/ProductItem/ProductItem";
+import Paginator from "../components/Paginator";
 import styles from "./StorePage.module.css";
 
 import { listProducts } from "../actions/productActions";
@@ -14,10 +15,9 @@ const StorePage = ({ history }) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
 
-  const { error, loading, products } = productList;
+  const { error, loading, products, page, pages } = productList;
 
   let keyword = history.location.search;
-  console.log(keyword);
 
   useEffect(() => {
     dispatch(listProducts(keyword));
@@ -47,6 +47,11 @@ const StorePage = ({ history }) => {
               ))}
             </div>
           </div>
+        )}
+        {loading ? (
+          ""
+        ) : (
+          <Paginator page={page} pages={pages} keyword={keyword} />
         )}
       </div>
     </div>

@@ -27,7 +27,7 @@ def getProducts(request):
     try: 
         products = paginator.page(page)
 
-    except PageNotAnInterger:
+    except PageNotAnInteger:
         products = paginator.page(1)
 
     except EmptyPage:

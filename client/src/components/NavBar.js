@@ -25,7 +25,7 @@ function NavBar() {
   };
 
   return (
-    <Menu secondary color="white">
+    <Menu secondary>
       <Menu.Item
         as={NavLink}
         to="/"
