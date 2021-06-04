@@ -63,9 +63,10 @@ function PlaceOrderPage({ history }) {
               <List.Item>
                 <h2>SHIPPING ADDRESS:</h2>
                 <p>
-                  <strong>Ship To: </strong>
-                  {cart.shippingAddress.address}, {cart.shippingAddress.city}
-                  {"    "} ,{cart.shippingAddress.state1} {"    "}{" "}
+                  <strong>Ship To: </strong> <br />
+                  {cart.shippingAddress.address} <br />{" "}
+                  {cart.shippingAddress.city},{"    "}{" "}
+                  {cart.shippingAddress.state1} {"    "} <br />
                   {cart.shippingAddress.zipCode}
                   {"    "} {cart.shippingAddress.country}
                 </p>
@@ -91,7 +92,7 @@ function PlaceOrderPage({ history }) {
                           <Grid.Row>
                             <Grid.Column width={4}>
                               <Image
-                                size="small"
+                                size="tiny"
                                 src={item.image}
                                 alt={item.name}
                                 rounded
@@ -105,7 +106,7 @@ function PlaceOrderPage({ history }) {
                             </Grid.Column>
                             <Grid.Column width={6}>
                               <h3>
-                                {item.quantity} X $ ${item.price} = $
+                                {item.quantity} x $ ${item.price} = $
                                 {(item.quantity * item.price).toFixed(2)}
                               </h3>
                             </Grid.Column>
