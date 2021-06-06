@@ -1,18 +1,24 @@
 import React from "react";
 import { Pagination } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
-function Paginator({ pages, page, keyword = "", isAdmin = false }) {
+import styles from "./Paginator.module.css";
+
+function Paginator({ pages, keyword = "", isAdmin = false }) {
   if (keyword) {
     keyword = keyword.split("?keyword=")[1].split("&")[0];
   }
 
-  console.log("Keyword: ", keyword);
-  console.log("Pages: ", pages);
-
   return pages > 1 ? (
-    <Pagination defaultActivePage={page} totalPages={pages}></Pagination>
+    <div className={styles.pagination}>
+      {[...Array(pages).keys()].map((x) => (
+        <Link to={`/store/?keyword=${keyword}&page=${x + 1}`} key={x + 1}>
+          <div className={styles.paginationLink}>{x + 1}</div>
+        </Link>
+      ))}
+    </div>
   ) : (
-    <Pagination disabled />
+    <Pagination totalPages={pages} disabled />
   );
 }
 
