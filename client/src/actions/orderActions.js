@@ -7,6 +7,10 @@ import {
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_SUCCESS,
+  PAY_ORDER_REQUEST,
+  PAY_ORDER_SUCCESS,
+  PAY_ORDER_FAIL,
+  PAY_ORDER_RESET,
 } from "../constants/orderConstants";
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -61,7 +65,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`api/orders/${id}/`, config);
+    const { data } = await axios.get(`/api/orders/${id}`, config);
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -77,3 +81,42 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const updateOrderToPaid =
+  (id, paymentResult) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PAY_ORDER_REQUEST,
+      });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.get(
+        `/api/orders/${id}/paid/`,
+        paymentResult,
+        config
+      );
+
+      dispatch({
+        type: PAY_ORDER_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PAY_ORDER_FAIL,
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };

@@ -6,6 +6,8 @@ import { Grid, Image, Card, List, Divider } from "semantic-ui-react";
 import MessageAlert from "../components/MessageAlert";
 import LoaderSpin from "../components/LoaderSpin";
 
+import styles from "./OrderPage.module.css";
+
 import { getOrderDetails } from "../actions/orderActions";
 
 function OrderPage({ match }) {
@@ -25,18 +27,18 @@ function OrderPage({ match }) {
     if (!order || order._id !== Number(orderId)) {
       dispatch(getOrderDetails(orderId));
     }
-  }, [order, orderId]);
+  }, [dispatch, order, orderId]);
 
   return loading ? (
     <LoaderSpin />
   ) : error ? (
     <MessageAlert color="red">{error}</MessageAlert>
   ) : (
-    <div>
-      <h1>Order #{order._id}</h1>
+    <div className={styles.wrapper}>
       <Grid>
         <Grid.Row>
           <Grid.Column width={10}>
+            <h1>Order #{order._id}</h1>
             <List>
               <List.Item>
                 <h2>SHIPPING ADDRESS:</h2>
@@ -52,18 +54,18 @@ function OrderPage({ match }) {
                 </p>
                 <p>
                   <strong>Ship To: </strong> <br />
-                  {order.shippingAddress.address} <br />{" "}
-                  {order.shippingAddress.city},{"    "}{" "}
-                  {order.shippingAddress.state1} {"    "} <br />
-                  {order.shippingAddress.zipCode}
-                  {"    "} {order.shippingAddress.country}
+                  {order.shipping_address.address} <br />{" "}
+                  {order.shipping_address.city},{"    "}{" "}
+                  {order.shipping_address.state1} {"    "} <br />
+                  {order.shipping_address.zipCode}
+                  {"    "} {order.shipping_address.country}
                 </p>
                 {order.is_delivered ? (
                   <MessageAlert color="green">
                     Delivered on: {order.delivered_at}
                   </MessageAlert>
                 ) : (
-                  <MessageAlert color="yellow">Not Delivered</MessageAlert>
+                  <MessageAlert color="yellow">Not Yet Delivered</MessageAlert>
                 )}
               </List.Item>
               <Divider />
@@ -71,11 +73,11 @@ function OrderPage({ match }) {
                 <h2>PAYMENT METHOD:</h2>
                 <p>
                   <strong>Payment Selected: </strong>
-                  {order.paymentMethod}
+                  {order.payment_method}
                 </p>
-                {order.isPaid ? (
+                {order.is_paid ? (
                   <MessageAlert color="green">
-                    Paid on {order.paidAt}
+                    Paid on {order.paid_at}
                   </MessageAlert>
                 ) : (
                   <MessageAlert color="yellow">Not Paid</MessageAlert>
@@ -122,9 +124,9 @@ function OrderPage({ match }) {
             </List>
           </Grid.Column>
 
-          <Grid.Column width={5}>
+          <Grid.Column width={6}>
             <Card fluid>
-              <h2>ORDER SUMMARY</h2>
+              <h2 className={styles.h2Summary}>ORDER SUMMARY</h2>
               <List>
                 <List.Item>
                   <Grid celled>
@@ -141,7 +143,7 @@ function OrderPage({ match }) {
                         <h3>SHIPPING:</h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${order.shippingPrice}</h4>
+                        <h4>${order.shipping_price}</h4>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -149,7 +151,7 @@ function OrderPage({ match }) {
                         <h3>TAX:</h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${order.tax}</h4>
+                        <h4>${order.tax_price}</h4>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -157,7 +159,7 @@ function OrderPage({ match }) {
                         <h3>TOTAL:</h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${order.totalPrice}</h4>
+                        <h4>${order.total_price}</h4>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>

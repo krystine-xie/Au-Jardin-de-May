@@ -5,6 +5,9 @@ import {
   PRODUCT_ITEM_REQUEST,
   PRODUCT_ITEM_SUCCESS,
   PRODUCT_ITEM_FAIL,
+  LATEST_PRODUCTS_REQUEST,
+  LATEST_PRODUCTS_SUCCESS,
+  LATEST_PRODUCTS_FAIL,
 } from "../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -53,6 +56,22 @@ export const productItemReducer = (state = { product: {} }, action) => {
         loading: false,
         error: action.payload,
       };
+
+    default:
+      return state;
+  }
+};
+
+export const latestProductsReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case LATEST_PRODUCTS_REQUEST:
+      return { loading: true, products: [] };
+
+    case LATEST_PRODUCTS_SUCCESS:
+      return { loading: false, products: action.payload };
+
+    case LATEST_PRODUCTS_FAIL:
+      return { loading: false, error: action.payload };
 
     default:
       return state;

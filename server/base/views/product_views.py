@@ -47,3 +47,11 @@ def getProduct(request, pk):
 
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+def getLatestProducts(request):
+    latest_products = Product.objects.order_by('-created_at')[0:5]
+
+    serializer = ProductSerializer(latest_products, many=True)
+    return Response(serializer.data)
+
