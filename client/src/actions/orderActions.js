@@ -10,8 +10,9 @@ import {
   PAY_ORDER_REQUEST,
   PAY_ORDER_SUCCESS,
   PAY_ORDER_FAIL,
-  PAY_ORDER_RESET,
 } from "../constants/orderConstants";
+
+import { CLEAR_CART_ITEMS } from "../constants/cartConstants";
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -36,6 +37,13 @@ export const createOrder = (order) => async (dispatch, getState) => {
       type: CREATE_ORDER_SUCCESS,
       payload: data,
     });
+
+    dispatch({
+      type: CLEAR_CART_ITEMS,
+      payload: data,
+    });
+
+    localStorage.removeItem("cartItems");
   } catch (error) {
     dispatch({
       type: CREATE_ORDER_FAIL,

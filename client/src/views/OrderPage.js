@@ -1,21 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { Grid, Image, Card, List, Divider } from "semantic-ui-react";
+import { PayPalButton } from "react-paypal-button-v2";
 
 import MessageAlert from "../components/MessageAlert";
 import LoaderSpin from "../components/LoaderSpin";
 
 import styles from "./OrderPage.module.css";
 
-import { getOrderDetails } from "../actions/orderActions";
+import { getOrderDetails, updateOrderToPaid } from "../actions/orderActions";
+import { PAY_ORDER_RESET } from "../constants/orderConstants";
 
 function OrderPage({ match }) {
   const orderId = match.params.id;
   const dispatch = useDispatch();
 
+  const [sdkReady, setSdkReady] = useState(false);
+
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, error, loading } = orderDetails;
+
+  const orderPay = useSelector((state) => state.orderPay);
+  const { success: successPay, loading: loadingPay } = orderPay;
 
   if (!loading && !error) {
     order.itemsPrice = order.orderItems
@@ -23,11 +30,34 @@ function OrderPage({ match }) {
       .toFixed(2);
   }
 
+  const addPayPalScript = () => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src =
+      "https://www.paypal.com/sdk/js?client-id=Ad-RX7kePCw4gP18qH6hqYuimUeRsbdFbjBggNbEU_nTs1qY7rR2sfn5MDdOBk8Vn5DkfMv0e-0aZ5ln";
+    script.async = true;
+    script.onload = () => {
+      setSdkReady(true);
+    };
+
+    document.body.appendChild(script);
+  };
+
   useEffect(() => {
-    if (!order || order._id !== Number(orderId)) {
+    if (!order || successPay || order._id !== Number(orderId)) {
       dispatch(getOrderDetails(orderId));
+    } else if (!order.is_paid) {
+      if (!window.paypal) {
+        addPayPalScript();
+      } else {
+        setSdkReady(true);
+      }
     }
-  }, [dispatch, order, orderId]);
+  }, [dispatch, order, orderId, successPay]);
+
+  const successPayment = (paymentResult) => {
+    dispatch(updateOrderToPaid(orderId, paymentResult));
+  };
 
   return loading ? (
     <LoaderSpin />
@@ -164,6 +194,23 @@ function OrderPage({ match }) {
                     </Grid.Row>
                   </Grid>
                 </List.Item>
+
+                {!order.is_paid && (
+                  <List.Item>
+                    {loadingPay && <LoaderSpin />}
+
+                    {!sdkReady ? (
+                      <LoaderSpin />
+                    ) : (
+                      <div className={styles.payment}>
+                        <PayPalButton
+                          amount={order.total_price}
+                          onSuccess={successPayment}
+                        />
+                      </div>
+                    )}
+                  </List.Item>
+                )}
 
                 <List.Item>
                   {error && <MessageAlert color="red">{error}</MessageAlert>}

@@ -39,7 +39,8 @@ const ShoppingCartPage = ({ location, history }) => {
               <h1>SHOPPING CART</h1>
               {cartItems.length === 0 ? (
                 <MessageAlert color="blue">
-                  Your cart is empty <Link to="/store">Go Back</Link>
+                  Your cart is empty <br />
+                  <br /> <Link to="/store">Go Back</Link>
                 </MessageAlert>
               ) : (
                 <List>

@@ -1,0 +1,10 @@
+.carouselImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselWrapper {
+  margin: 30px auto;
+  width: 500px;
+}

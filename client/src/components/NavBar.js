@@ -56,6 +56,7 @@ function NavBar() {
         active={activeItem === "CONTACT"}
         onClick={() => handleItemClick("CONTACT")}
       />
+
       <Menu.Menu position="right">
         <div className={styles.searchBar}>
           <SearchBar />

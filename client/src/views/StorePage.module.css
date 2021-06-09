@@ -25,3 +25,10 @@
   width: 40%;
   margin: 50px auto;
 }
+
+span {
+  text-transform: uppercase;
+  font-size: 12.5px;
+  color: rgb(33, 102, 64);
+  font-weight: 700;
+}

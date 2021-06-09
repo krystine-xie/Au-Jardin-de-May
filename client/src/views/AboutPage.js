@@ -1,36 +1,42 @@
-import { React } from 'react';
-import {
-    Container
-} from 'semantic-ui-react';
+import { React } from "react";
+import { Container } from "semantic-ui-react";
 
-import styles from './StorePage.module.css';
-
+import styles from "./StorePage.module.css";
 
 const AboutPage = (props) => {
-
-    return (
-        <div>
-            <div className={styles.aboutUs}>
-                <Container textAlign='center'>
-                    <h2>ABOUT US</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. 
-                    </p>
-                    <p>
-                        Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium.
-                    </p>
-                    <p>
-                        Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. 
-                    </p>
-                    <p>
-                        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
-                    </p>
-                </Container> 
-            </div>
-            
-        </div>
-    )
-
-}
+  return (
+    <div>
+      <div className={styles.aboutUs}>
+        <Container textAlign="center">
+          <h2>ABOUT AU JARDIN DE MAY</h2>
+          <p>
+            Au Jardin de May is an e-commerce website built to showcase my
+            mother's (May) flowers and succulent arrangements. All of the
+            "products" shown on this website is handcrafted and gifted to
+            friends and family.
+          </p>
+          <p>
+            The website's front-end is build with{" "}
+            <span>ReactJS, Semantic UI</span> and <span>vanilla CSS</span> with
+            responsiveness in mind, and the back-end is built with{" "}
+            <span>Python</span> through the <span>Django Framework</span>. The
+            RESTful API was built with <span>Django Rest Framework</span>. The
+            front-end state is managed through the use of{" "}
+            <span>Redux + Redux DevTools</span> for debugging purposes.
+          </p>
+          <p>
+            Additionally, this website integrates the <span>Paypal API</span> to
+            manage the payments (using Sandbox test accounts).
+          </p>
+          <hr />
+          <p>
+            <span>Full Stack Developer:</span> Krystine Xie (
+            <a href="mailto: krystinex@gmail.com">krystinex@gmail.com</a>)
+          </p>
+        </Container>
+      </div>
+    </div>
+  );
+};
 
 export default AboutPage;

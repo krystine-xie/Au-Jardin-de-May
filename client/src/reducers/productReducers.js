@@ -65,13 +65,13 @@ export const productItemReducer = (state = { product: {} }, action) => {
 export const latestProductsReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case LATEST_PRODUCTS_REQUEST:
-      return { loading: true, products: [] };
+      return { loading: true, products: [], error: "" };
 
     case LATEST_PRODUCTS_SUCCESS:
-      return { loading: false, products: action.payload };
+      return { loading: false, products: action.payload, error: "" };
 
     case LATEST_PRODUCTS_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload, products: [] };
 
     default:
       return state;

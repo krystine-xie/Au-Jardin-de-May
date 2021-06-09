@@ -7,6 +7,7 @@ import CheckoutProgress from "../components/CheckoutProgress";
 import MessageAlert from "../components/MessageAlert";
 
 import { createOrder } from "../actions/orderActions";
+import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 
 function PlaceOrderPage({ history }) {
   const orderCreate = useSelector((state) => state.orderCreate);
@@ -34,8 +35,9 @@ function PlaceOrderPage({ history }) {
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
     }
-  }, [success, history]);
+  }, [dispatch, success, history]);
 
   const placeOrderHandler = (e) => {
     e.preventDefault();

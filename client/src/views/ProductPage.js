@@ -41,7 +41,7 @@ const ProductPage = ({ history }) => {
             <div>
               <p className={styles.category}>{product.category}</p>
               <h3>{product.name}</h3>
-              <p>{product.description}</p>
+              <p className={styles.description}>{product.description}</p>
               <div className={styles.quantitySelect}>
                 <h4>Quantity:</h4>
                 {product.count_in_stock > 0 && (

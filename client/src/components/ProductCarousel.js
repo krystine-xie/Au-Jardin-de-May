@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Carousel, Image } from "react-bootstrap";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 import LoaderSpin from "./LoaderSpin";
 import MessageAlert from "./MessageAlert";
 
 import { listLatestProducts } from "../actions/productActions";
+import styles from "./ProductCarousel.module.css";
 
-function ProductCarousel() {
+const ProductCarousel = () => {
   const dispatch = useDispatch();
 
   const latestProductsList = useSelector((state) => state.latestProductsList);
@@ -22,21 +24,22 @@ function ProductCarousel() {
   ) : error ? (
     <MessageAlert color="red">{error}</MessageAlert>
   ) : (
-    <Carousel pause="hover">
-      {products.map((product) => (
-        <Carousel.Item key={product._id}>
-          <Link to={`/collection/${product._id}`}>
-            <Image src={product.image} alt={product.name} />
-            <Carousel.Caption className="carousel.caption">
-              <h4>
-                {product.name} - (${product.price})
-              </h4>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <div className={styles.carouselWrapper}>
+      <h1>Latest Products</h1>
+      <Carousel pause="hover" width={500} infiniteLoop={true} autoPlay={true}>
+        {products.map((product) => (
+          <div key={product._id}>
+            <h4>
+              {product.name} - (${product.price})
+            </h4>
+            <Link to={`/collection/${product._id}`}>
+              <img src={product.image} alt={product.name} />
+            </Link>
+          </div>
+        ))}
+      </Carousel>
+    </div>
   );
-}
+};
 
 export default ProductCarousel;

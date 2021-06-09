@@ -58,9 +58,7 @@ export const listProductItem = (id) => async (dispatch) => {
 export const listLatestProducts = () => async (dispatch) => {
   try {
     dispatch({ type: LATEST_PRODUCTS_REQUEST });
-
     const { data } = await axios.get(`/api/products/latest/`);
-
     dispatch({
       type: LATEST_PRODUCTS_SUCCESS,
       payload: data,

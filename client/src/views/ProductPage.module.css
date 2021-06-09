@@ -36,3 +36,8 @@
   margin: 30px auto 20px;
   width: 40%;
 }
+
+.description {
+  width: 80%;
+  margin: 8px auto;
+}
