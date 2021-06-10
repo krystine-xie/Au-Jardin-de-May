@@ -26,7 +26,13 @@ const ProductCarousel = () => {
   ) : (
     <div className={styles.carouselWrapper}>
       <h1>Latest Products</h1>
-      <Carousel pause="hover" width={500} infiniteLoop={true} autoPlay={true}>
+      <Carousel
+        pause="hover"
+        width={500}
+        infiniteLoop={true}
+        autoPlay={true}
+        showThumbs={false}
+      >
         {products.map((product) => (
           <div key={product._id}>
             <h4>

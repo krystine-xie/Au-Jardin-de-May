@@ -1,13 +1,11 @@
-.wrapperDetail {
-    /* border: 1px solid grey; */
-    display: flex;
-    justify-content: space-between;
-    margin: 50px auto;
-    width: 50%;
+.wrapper {
+  /* border: 1px solid grey; */
+  margin: 10px auto;
+  width: 95%;
 }
 
 .details {
-    /* border: 1px dashed blue; */
-    width: 70%;
-    text-align: left;
+  /* border: 1px dashed blue; */
+  width: 70%;
+  text-align: left;
 }
