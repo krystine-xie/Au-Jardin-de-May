@@ -35,7 +35,7 @@ const ShoppingCartPage = ({ location, history }) => {
       <div className={styles.cartWrapper}>
         <Grid>
           <Grid.Row className={styles.cartRow}>
-            <Grid.Column width={10}>
+            <Grid.Column width={12}>
               <h1>SHOPPING CART</h1>
               {cartItems.length === 0 ? (
                 <MessageAlert color="blue">

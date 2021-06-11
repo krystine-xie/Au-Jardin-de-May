@@ -9,6 +9,15 @@ import {
   LATEST_PRODUCTS_REQUEST,
   LATEST_PRODUCTS_SUCCESS,
   LATEST_PRODUCTS_FAIL,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
+  CREATE_PRODUCT_REQUEST,
+  CREATE_PRODUCT_SUCCESS,
+  CREATE_PRODUCT_FAIL,
+  UPDATE_PRODUCT_REQUEST,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAIL,
 } from "../constants/productConstants";
 
 export const listProducts =
@@ -66,6 +75,77 @@ export const listLatestProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LATEST_PRODUCTS_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const createProduct = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CREATE_PRODUCT_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post(`/api/products/create/`, {}, config);
+
+    dispatch({
+      type: CREATE_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: CREATE_PRODUCT_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const deleteProduct = (productId) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: DELETE_PRODUCT_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(
+      `/api/products/delete/${productId}`,
+      config
+    );
+
+    dispatch({
+      type: DELETE_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_PRODUCT_FAIL,
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail

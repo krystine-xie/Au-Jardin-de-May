@@ -18,6 +18,7 @@ import PlaceOrderPage from "./views/PlaceOrderPage";
 import OrderPage from "./views/OrderPage";
 import UserListPage from "./views/UserListPage";
 import EditUserPage from "./views/EditUserPage";
+import EditProductPage from "./views/EditProductPage";
 
 import ProductListPage from "./views/ProductListPage";
 
@@ -54,7 +55,11 @@ function App() {
           exact
           render={() => <EditUserPage />}
         />
-        <Route path="/admin/products" render={() => <ProductListPage />} />
+        <Route path="/admin/productlist" render={() => <ProductListPage />} />
+        <Route
+          path="/admin/products/:id/edit"
+          render={() => <EditProductPage />}
+        />
 
         <Footer />
       </Router>

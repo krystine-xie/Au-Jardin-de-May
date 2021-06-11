@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Table, Header, Button } from "semantic-ui-react";
+import { Link, withRouter } from "react-router-dom";
 
 import LoaderSpin from "../components/LoaderSpin";
 import MessageAlert from "../components/MessageAlert";
 import Paginator from "../components/Paginator";
 
-import { listProducts } from "../actions/productActions";
-import { Link, withRouter } from "react-router-dom";
+import {
+  listProducts,
+  deleteProduct,
+  createProduct,
+} from "../actions/productActions";
+
+import { CREATE_PRODUCT_RESET } from "../constants/productConstants";
 
 import styles from "./UserListPage.module.css";
 
@@ -19,24 +25,56 @@ function ProductListPage({ history, match }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const productCreate = useSelector((state) => state.createProduct);
+  const {
+    success: successCreate,
+    error: errorCreate,
+    loading: loadingCreate,
+    product: newProduct,
+  } = productCreate;
+
+  const productDelete = useSelector((state) => state.deleteProduct);
+  const {
+    success: successDelete,
+    error: errorDelete,
+    loading: loadingDelete,
+  } = productDelete;
+
   //   const userDelete = useSelector((state) => state.userDelete);
   //   const { success: successDelete } = userDelete;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listProducts());
-    } else {
-      history.pushState("/login");
+    dispatch({ type: CREATE_PRODUCT_RESET });
+    if (!userInfo.isAdmin) {
+      history.push("/login");
     }
-  }, [dispatch, history, userInfo]);
+
+    if (successCreate) {
+      history.push(`/admin/products/${newProduct._id}/edit/`);
+    } else {
+      dispatch(listProducts());
+    }
+  }, [dispatch, history, userInfo, successDelete, successCreate, newProduct]);
+
+  const createProductHandle = () => {
+    dispatch(createProduct());
+  };
 
   const deleteProductHandle = (id) => {
-    console.log("product deleted");
+    if (window.confirm(`Are you sure you want to delete product ${id}?`)) {
+      dispatch(deleteProduct(id));
+    }
   };
 
   return (
     <div className={styles.wrapper}>
       <Header as="h1">PRODUCT LIST</Header>
+      {loadingDelete && <LoaderSpin />}
+      {errorDelete && <MessageAlert color="red">{errorDelete}</MessageAlert>}
+
+      {loadingCreate && <LoaderSpin />}
+      {errorCreate && <MessageAlert color="red">{errorCreate}</MessageAlert>}
+
       {loading ? (
         <LoaderSpin />
       ) : error ? (
@@ -71,7 +109,7 @@ function ProductListPage({ history, match }) {
                   ></Button>
                   <Button
                     basic
-                    icon="user delete"
+                    icon="trash alternate outline"
                     color="red"
                     onClick={() => deleteProductHandle(product._id)}
                   ></Button>
@@ -82,7 +120,7 @@ function ProductListPage({ history, match }) {
         </Table>
       )}
 
-      <Button icon="plus" color="green">
+      <Button icon="plus" color="green" onClick={createProductHandle()}>
         CREATE PRODUCT
       </Button>
     </div>

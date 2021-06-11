@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { Grid, Image, Card, List, Divider } from "semantic-ui-react";
+import { Grid, Image, Card, List, Divider, Header } from "semantic-ui-react";
 import { PayPalButton } from "react-paypal-button-v2";
 
 import MessageAlert from "../components/MessageAlert";
@@ -70,7 +70,7 @@ function OrderPage({ match }) {
             <h1>Order #{order._id}</h1>
             <List>
               <List.Item>
-                <h2>SHIPPING ADDRESS:</h2>
+                <Header as="h2">SHIPPING ADDRESS:</Header>
                 <p>
                   <strong>Name: </strong> {order.user.name}
                 </p>
@@ -99,7 +99,7 @@ function OrderPage({ match }) {
               </List.Item>
               <Divider />
               <List.Item>
-                <h2>PAYMENT METHOD:</h2>
+                <Header as="h2">PAYMENT METHOD:</Header>
                 <p>
                   <strong>Payment Selected: </strong>
                   {order.payment_method}
@@ -114,7 +114,9 @@ function OrderPage({ match }) {
               </List.Item>
               <Divider />
               <List.Item>
-                <h2>ORDER ITEMS:</h2>
+                <Header as="h2" className={styles.rightColHeader}>
+                  ORDER ITEMS:
+                </Header>
                 {order.orderItems.length === 0 ? (
                   <MessageAlert color="red">Order is empty!</MessageAlert>
                 ) : (

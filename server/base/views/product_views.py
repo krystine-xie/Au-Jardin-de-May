@@ -55,3 +55,55 @@ def getLatestProducts(request):
     serializer = ProductSerializer(latest_products, many=True)
     return Response(serializer.data)
 
+
+#ADMIN VIEWS
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def createProduct(request): 
+    data = request.data
+
+    try:
+        product = Product.objects.create(
+            name = "Dummy Name",
+            price = "0.00",
+            category = "Arrangement",
+            description = "",
+            color = "Rainbow",
+            count_in_stock = 0,
+        )
+
+        serializer = ProductSerializer(product, many=False)
+        return Response(serializer.data)
+
+    except:
+        message = {'detail': 'Something went wrong'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateProduct(request, pk):
+    data = request.data
+
+    product_to_update = Product.objects.get(_id=pk)
+    product_to_update.name = data['name']
+    product_to_update.price = data['price']
+    product_to_update.category = data['category']
+    product_to_update.description = data['description']
+    product_to_update.color = data['color']
+    product_to_update.count_in_stock = data['count_in_stock']
+
+    product_to_update.save()
+    serializer = ProductSerializer(product_to_update, many=False)
+
+    return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteProduct(request, pk):
+    product_to_delete = Product.objects.get(_id=pk)
+    product_to_delete.delete()
+    return Response("Product successfully deleted")
+
+
+
