@@ -23,6 +23,11 @@
   width: 90%;
 }
 
+.cartRow {
+  display: flex;
+  justify-content: space-between;
+}
+
 .category {
   color: darkblue;
   text-transform: uppercase;

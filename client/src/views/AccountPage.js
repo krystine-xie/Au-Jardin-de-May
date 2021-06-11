@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Segment, Grid, Table } from "semantic-ui-react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import styles from "./AccountPage.module.css";
 
 import { getUserDetails, updateUserDetails } from "../actions/userActions";
@@ -38,7 +38,7 @@ const AccountPage = ({ history }) => {
       history.push("/login");
     } else {
       // checks if user details have been fetched yet or if update was successful!
-      if (!user || !user.name || success) {
+      if (!user || !user.name || success || userInfo._id !== user._id) {
         // makes sure we clear our previous state first
         dispatch({
           type: USER_PROFILE_UPDATE_RESET,
@@ -104,7 +104,7 @@ const AccountPage = ({ history }) => {
                 </Form.Field>
                 <Form.Field>
                   <input
-                    placeholder="Password"
+                    placeholder="Change Password"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -130,17 +130,18 @@ const AccountPage = ({ history }) => {
               ) : (
                 <Table size="small" striped>
                   <Table.Header>
-                    <Table.Row>
+                    <Table.Row textAlign="center">
                       <Table.HeaderCell>ID</Table.HeaderCell>
                       <Table.HeaderCell>Date</Table.HeaderCell>
                       <Table.HeaderCell>Total</Table.HeaderCell>
                       <Table.HeaderCell>Paid</Table.HeaderCell>
                       <Table.HeaderCell>Delivered</Table.HeaderCell>
+                      <Table.HeaderCell>Details</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
                     {orders.map((order) => (
-                      <Table.Row key={order._id}>
+                      <Table.Row key={order._id} textAlign="center">
                         <Table.Cell>{order._id}</Table.Cell>
                         <Table.Cell>
                           {order.created_at.substring(0, 10)}
@@ -155,6 +156,16 @@ const AccountPage = ({ history }) => {
                           {order.delivered_at
                             ? order.delivered_at
                             : "Not Yet Delivered"}
+                        </Table.Cell>
+                        <Table.Cell>
+                          <Button
+                            basic
+                            color="purple"
+                            as={Link}
+                            to={`/order/${order._id}`}
+                          >
+                            VIEW DETAILS
+                          </Button>
                         </Table.Cell>
                       </Table.Row>
                     ))}

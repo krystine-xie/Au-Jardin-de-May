@@ -16,6 +16,10 @@ import ShippingPage from "./views/ShippingPage";
 import PaymentPage from "./views/PaymentPage";
 import PlaceOrderPage from "./views/PlaceOrderPage";
 import OrderPage from "./views/OrderPage";
+import UserListPage from "./views/UserListPage";
+import EditUserPage from "./views/EditUserPage";
+
+import ProductListPage from "./views/ProductListPage";
 
 // Components
 import Header from "./components/Header";
@@ -43,6 +47,14 @@ function App() {
         <Route path="/payment" render={() => <PaymentPage />} />
         <Route path="/placeorder" render={() => <PlaceOrderPage />} />
         <Route path="/order/:id" render={() => <OrderPage />} />
+
+        <Route path="/admin/userlist" exact render={() => <UserListPage />} />
+        <Route
+          path="/admin/users/:id/edit"
+          exact
+          render={() => <EditUserPage />}
+        />
+        <Route path="/admin/products" render={() => <ProductListPage />} />
 
         <Footer />
       </Router>

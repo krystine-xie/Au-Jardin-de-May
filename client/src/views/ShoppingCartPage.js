@@ -34,7 +34,7 @@ const ShoppingCartPage = ({ location, history }) => {
     <Segment>
       <div className={styles.cartWrapper}>
         <Grid>
-          <Grid.Row>
+          <Grid.Row className={styles.cartRow}>
             <Grid.Column width={10}>
               <h1>SHOPPING CART</h1>
               {cartItems.length === 0 ? (
@@ -83,7 +83,7 @@ const ShoppingCartPage = ({ location, history }) => {
                             ))}
                           </select>
                         </Grid.Column>
-                        <Grid.Column width={1}>
+                        <Grid.Column width={2}>
                           <Button
                             type="button"
                             onClick={() => removeFromCartHandler(item.product)}

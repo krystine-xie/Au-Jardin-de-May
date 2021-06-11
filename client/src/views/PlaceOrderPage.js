@@ -37,7 +37,7 @@ function PlaceOrderPage({ history }) {
       history.push(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });
     }
-  }, [dispatch, success, history]);
+  }, [dispatch, success, history, order._id]);
 
   const placeOrderHandler = (e) => {
     e.preventDefault();

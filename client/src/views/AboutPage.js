@@ -12,8 +12,8 @@ const AboutPage = (props) => {
           <p>
             Au Jardin de May is an e-commerce website built to showcase my
             mother's (May) flowers and succulent arrangements. All of the
-            "products" shown on this website is handcrafted and gifted to
-            friends and family.
+            "products" shown on this website were handmade by her and
+            subsequently gifted to friends and family.
           </p>
           <p>
             The website's front-end is build with{" "}

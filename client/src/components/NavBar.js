@@ -56,6 +56,23 @@ function NavBar() {
         active={activeItem === "CONTACT"}
         onClick={() => handleItemClick("CONTACT")}
       />
+      {userInfo && userInfo.isAdmin && (
+        <Menu vertical borderless={true}>
+          <Dropdown item text="ADMIN">
+            <Dropdown.Menu>
+              <Dropdown.Item as={NavLink} to="/admin/userlist">
+                User List
+              </Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="/admin/productlist">
+                Product List
+              </Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="/admin/orderlist">
+                Order List
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu>
+      )}
 
       <Menu.Menu position="right">
         <div className={styles.searchBar}>

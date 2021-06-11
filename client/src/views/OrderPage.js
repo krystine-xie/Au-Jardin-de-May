@@ -10,7 +10,6 @@ import LoaderSpin from "../components/LoaderSpin";
 import styles from "./OrderPage.module.css";
 
 import { getOrderDetails, updateOrderToPaid } from "../actions/orderActions";
-import { PAY_ORDER_RESET } from "../constants/orderConstants";
 
 function OrderPage({ match }) {
   const orderId = match.params.id;
