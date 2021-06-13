@@ -1,0 +1,45 @@
+.loginWrapper {
+  margin: 20px auto 50px;
+  width: 400px;
+}
+
+.shippingWrapper {
+  margin: 20px auto 50px;
+  width: 600px;
+}
+
+.paymentWrapper {
+  margin: 50px auto 50px;
+  width: 500px;
+}
+
+.noAccount {
+  margin: 50px;
+}
+
+.header {
+  margin: 50px;
+}
+
+.link {
+  color: black;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: grey;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.searchBar {
+  display: inline;
+}
+
+.label {
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: darkblue;
+}

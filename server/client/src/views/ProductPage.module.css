@@ -1,0 +1,48 @@
+.wrapper {
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-around;
+  margin: 30px auto;
+  padding: 15px;
+  width: 900px;
+}
+
+.detailWrap {
+  display: flex;
+  align-items: center;
+}
+
+.dropdownQty {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.cartWrapper {
+  margin: 0px auto;
+  width: 90%;
+}
+
+.cartRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category {
+  color: darkblue;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.quantitySelect {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px auto 20px;
+  width: 40%;
+}
+
+.description {
+  width: 80%;
+  margin: 8px auto;
+}
