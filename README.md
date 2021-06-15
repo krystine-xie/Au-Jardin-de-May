@@ -28,10 +28,10 @@ https://au-jardin-de-may.herokuapp.com/
 
 ## Demos
   ### Homepage 
-  ![](https://i.ibb.co/tp2qFTf/home.gif)
+  ![](gifs/home.gif)
   
   ### Store Page
-  ![](https://i.ibb.co/KFVd4VM/store.gif)
+  ![](gifs/store.gif)
 
   
 ## Related Links
