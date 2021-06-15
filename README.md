@@ -18,9 +18,10 @@ https://au-jardin-de-may.herokuapp.com/
 ## Functionality
   * Client is able to register new user and login with validations implemented
   * Client is able to view and update their profile details & their orders
-  * Client is able to use search function to search for products
+  * Client is able to use search function to search for products listed
   * Client can save shipping + billing address and payment detail securely
   * Admin user can add products, and edit users, products, and order details. 
+  * Home Page displays the 5 most recently added products onto the database, while the store displays all the products
 
 ## Developer/Author
   Krystine Xie: https://github.com/krystine-xie/
