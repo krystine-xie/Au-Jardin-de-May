@@ -4,6 +4,9 @@
 ## Overview
   Au Jardin De May is an e-commerce website for ordering and buying custom-made flower arrangements. The back-end is built in Python with the Django + Django REST Framework, while the front-end design is crafted with ReactJS, CSS + Semantic UI with responsiveness in mind.
   
+## Demo Link
+https://au-jardin-de-may.herokuapp.com/
+  
 ## Features
   * E-commerce ERD created with Lucidchart
   * Wireframe organised & built with Balsamiq
@@ -17,6 +20,7 @@
   * Client is able to view and update their profile details & their orders
   * Client is able to view and filter through products by category, colour and size
   * Client can save shipping + billing address and payment detail securely
+  * Admin user can add products, and edit users, products, and orders. 
 
 ## Developer/Author
   Krystine Xie: https://github.com/krystine-xie/
