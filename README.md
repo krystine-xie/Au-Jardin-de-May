@@ -32,8 +32,7 @@ https://au-jardin-de-may.herokuapp.com/
   
   ### Store Page
   ![](https://i.ibb.co/KFVd4VM/store.gif)
-  
-  ### Login & Registration
+
   
 ## Related Links
   * Semantic-UI-React: https://react.semantic-ui.com/
