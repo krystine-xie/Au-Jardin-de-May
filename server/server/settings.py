@@ -29,7 +29,7 @@ SECRET_KEY = 'pa=e9=njy0ngnjft&j!l&zk77ta97#=c(b$igsfmz$sv(lj%d$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://au-jardin-de-may.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'au-jardin-de-may.herokuapp.com']
 
 
 # Application definition
