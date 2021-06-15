@@ -86,7 +86,9 @@ def updateProduct(request, pk):
     data = request.data
 
     product_to_update = Product.objects.get(_id=pk)
+    
     product_to_update.name = data['name']
+    product_to_update.image = data['image']
     product_to_update.price = data['price']
     product_to_update.category = data['category']
     product_to_update.description = data['description']

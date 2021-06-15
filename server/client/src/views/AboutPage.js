@@ -24,6 +24,11 @@ const AboutPage = (props) => {
             front-end state is managed through the use of{" "}
             <span>Redux + Redux DevTools</span> for debugging purposes.
           </p>
+
+          <p>
+            Au Jardin De May uses <span>PostGreSQL</span> for its database.
+          </p>
+
           <p>
             Additionally, this website integrates the <span>Paypal API</span> to
             manage the payments (using Sandbox test accounts).

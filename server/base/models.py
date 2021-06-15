@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Product(models.Model): 
+    _id = models.AutoField(primary_key=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
     image = models.CharField(max_length=200, null=True, blank=True, default="https://i.ibb.co/XkLDDnV/placeholder-image-768x576.png")
@@ -12,7 +13,6 @@ class Product(models.Model):
     color = models.CharField(max_length=200, null=True, blank=True)
     count_in_stock = models.IntegerField(null=True, blank=True, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    _id = models.AutoField(primary_key=True, editable=False)
     
     def __str__(self):
         return self.name

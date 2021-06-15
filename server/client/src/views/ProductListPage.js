@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import LoaderSpin from "../components/LoaderSpin";
 import MessageAlert from "../components/MessageAlert";
-import Paginator from "../components/Paginator";
+import Paginator from "../components/Paginator/Paginator";
 
 import {
   listProducts,
@@ -132,6 +132,8 @@ function ProductListPage({ history, match }) {
           <Paginator page={page} pages={pages} isAdmin={true} />
         </div>
       )}
+
+      <br />
 
       <Button icon="plus" color="green" onClick={createProductHandle}>
         CREATE PRODUCT

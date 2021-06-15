@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='_id',
-            field=models.AutoField(default=1, editable=False, primary_key=True, serialize=False),
+            field=models.AutoField(editable=False, primary_key=True, serialize=False),
             preserve_default=False,
         ),
         migrations.CreateModel(

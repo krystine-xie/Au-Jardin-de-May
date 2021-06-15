@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 import styles from "./ProductItem.module.css";
 
@@ -8,7 +9,7 @@ const ProductItem = (props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Card link href={`/collection/${id}`} color="pink">
+      <Card as={Link} to={`/collection/${id}`} color="pink">
         <Image src={imageLink} wrapper ui={false} />
         <Card.Content>
           <Card.Header>{name.toUpperCase()}</Card.Header>

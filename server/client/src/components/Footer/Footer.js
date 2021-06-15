@@ -3,7 +3,7 @@ import { Form, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
-const Footer = (props) => {
+const Footer = () => {
   return (
     <div>
       <div className={styles.newsletterDiv}>

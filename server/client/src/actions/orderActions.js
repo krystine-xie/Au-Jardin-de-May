@@ -19,7 +19,6 @@ import {
   DELIVER_ORDER_REQUEST,
   DELIVER_ORDER_SUCCESS,
   DELIVER_ORDER_FAIL,
-  DELIVER_ORDER_RESET,
 } from "../constants/orderConstants";
 
 import { CLEAR_CART_ITEMS } from "../constants/cartConstants";

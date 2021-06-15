@@ -6,7 +6,7 @@ import FilterBar from "../components/FilterBar/FilterBar";
 import LoaderSpin from "../components/LoaderSpin";
 import MessageAlert from "../components/MessageAlert";
 import ProductItem from "../components/ProductItem/ProductItem";
-import Paginator from "../components/Paginator";
+import Paginator from "../components/Paginator/Paginator";
 import styles from "./StorePage.module.css";
 
 import { listProducts } from "../actions/productActions";
