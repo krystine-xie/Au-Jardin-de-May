@@ -23,6 +23,10 @@ https://au-jardin-de-may.herokuapp.com/
   * Admin user can add products, and edit users, products, and order details. 
   * Home Page displays the 5 most recently added products onto the database, while the store displays all the products
 
+## Future Features
+ * Client will be able to filter through products based on colour, size, category
+ * Add subscription and contact functionality
+
 ## Developer/Author
   Krystine Xie: https://github.com/krystine-xie/
 
