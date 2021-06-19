@@ -24,6 +24,7 @@ https://au-jardin-de-may.herokuapp.com/
   * Home Page displays the 5 most recently added products onto the database, while the store displays all the products
 
 ## Future Features
+ * Introduce localisation to e-commerce application 
  * Client will be able to filter through products based on colour, size, category
  * Add subscription and contact functionality
 
