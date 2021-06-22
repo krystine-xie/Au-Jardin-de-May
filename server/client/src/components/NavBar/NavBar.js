@@ -8,7 +8,16 @@ import { logout } from "../../actions/userActions";
 
 import styles from "./NavBar.module.css";
 
-function NavBar() {
+// react-intl
+import { LOCALES } from "../../i18n/locales";
+
+const NavBar = (props) => {
+
+  const languages = [
+    { name: "EN",  code: LOCALES.ENGLISH }, 
+    { name: "FR",  code: LOCALES.FRENCH }
+  ]
+
   const [activeItem, setActiveItem] = useState(null);
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -34,7 +43,8 @@ function NavBar() {
         active={activeItem === "home"}
         onClick={() => handleItemClick("HOME")}
         link
-      />
+      > 
+      </Menu.Item>
       <Menu.Item
         as={NavLink}
         to="/about"
@@ -75,6 +85,16 @@ function NavBar() {
       )}
 
       <Menu.Menu position="right">
+        <div className="switcher">
+          <select className={styles.switcher}>
+            {
+              languages.map(({ name, code }) => (
+                <option key={code} value={code}>{name}</option>
+              ))
+              }
+          </select>
+        </div>
+
         <div className={styles.searchBar}>
           <SearchBar />
         </div>
