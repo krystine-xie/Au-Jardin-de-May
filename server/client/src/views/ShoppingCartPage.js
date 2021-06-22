@@ -6,6 +6,7 @@ import styles from "./ProductPage.module.css";
 
 import MessageAlert from "../components/MessageAlert";
 import { addToCart, removeFromCart } from "../actions/cartActions";
+import { FormattedMessage } from "react-intl";
 
 const ShoppingCartPage = ({ location, history }) => {
   const { id } = useParams();
@@ -36,7 +37,9 @@ const ShoppingCartPage = ({ location, history }) => {
         <Grid>
           <Grid.Row className={styles.cartRow}>
             <Grid.Column width={12}>
-              <h1>SHOPPING CART</h1>
+              <h1>
+                <FormattedMessage id="shopping_cart" />
+              </h1>
               {cartItems.length === 0 ? (
                 <MessageAlert color="blue">
                   Your cart is empty <br />
@@ -123,7 +126,7 @@ const ShoppingCartPage = ({ location, history }) => {
                       fluid
                       onClick={checkoutHandler}
                     >
-                      Proceed to Checkout
+                      <FormattedMessage id="proceed_to_checkout" />
                     </Button>
                   </List.Item>
                 </List>

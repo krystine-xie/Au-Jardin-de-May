@@ -6,6 +6,8 @@ import { withRouter, useParams } from "react-router-dom";
 
 import { listProductItem } from "../actions/productActions";
 
+import { FormattedMessage, FormattedNumber } from "react-intl";
+
 import LoaderSpin from "../components/LoaderSpin";
 import MessageAlert from "../components/MessageAlert";
 
@@ -26,6 +28,8 @@ const ProductPage = ({ history }) => {
     history.push(`/cart/${id}?quantity=${quantity}`);
   };
 
+  const locale = localStorage.getItem("locale");
+
   return (
     <div>
       {loading ? (
@@ -43,7 +47,9 @@ const ProductPage = ({ history }) => {
               <h3>{product.name}</h3>
               <p className={styles.description}>{product.description}</p>
               <div className={styles.quantitySelect}>
-                <h4>Quantity:</h4>
+                <h4>
+                  <FormattedMessage id="quantity" />:
+                </h4>
                 {product.count_in_stock > 0 && (
                   <select
                     className={styles.dropdownQty}
@@ -65,7 +71,10 @@ const ProductPage = ({ history }) => {
                 disabled={product.count_in_stock <= 0}
                 type="button"
               >
-                ${product.price} | ADD TO CART
+                {locale === "en-US" ? "$" : ""}{" "}
+                <FormattedNumber value={product.price} style={`currency`} />{" "}
+                {locale === "fr-FR" ? "$" : ""} |{" "}
+                <FormattedMessage id="add_to_cart" />
               </Button>
             </div>
           </div>

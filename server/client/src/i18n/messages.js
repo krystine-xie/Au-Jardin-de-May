@@ -15,10 +15,7 @@ export const messages = {
     profile: "PROFILE",
     my_cart: "MY CART",
     shop_now: "SHOP NOW",
-    shop_description:
-      "A flower shop focused on delivering contemporary & customisable floral pieces for all occasions!",
-    shop_subheader1: "FLOWER & SUCCULENT",
-    shop_subheader2: "ARRANGEMENTS",
+    login: "LOGIN",
 
     //home page
     known_for: "WHAT WE'RE KNOWN FOR",
@@ -28,6 +25,10 @@ export const messages = {
     testimonials: "CUSTOMER TESTIMONIALS",
     newsletter: "JOIN OUR NEWSLETTER FOR UPDATES & DEALS",
     latest_products: "Latest Products",
+    shop_description:
+      "A flower shop focused on delivering contemporary & customisable floral pieces for all occasions!",
+    shop_subheader1: "FLOWER & SUCCULENT",
+    shop_subheader2: "ARRANGEMENTS",
 
     // contact page
     lets_chat: "👋🏽 Hi there! Let's chat. 🌺",
@@ -46,8 +47,32 @@ export const messages = {
     user_profile: "USER PROFILE",
     past_orders: "MY PAST ORDERS",
 
+    // login page
+    welcome: "Welcome!",
+    no_account: "Don't have an account?",
+    have_account: "Have an account?",
+    sign_up: "SIGN UP",
+    create_account: "CREATE ACCOUNT",
+    return_to_store: "RETURN TO STORE",
+
     // product page
     shop_all: "Shop All Products",
+    filter_by: "FILTER BY",
+    colour: "COLOUR",
+    category: "CATEGORY",
+    size: "SIZE",
+
+    // product detail page
+    add_to_cart: "ADD TO CART",
+    quantity: "Quantity",
+
+    // shopping cart
+    shopping_cart: "SHOPPING CART",
+    proceed_to_checkout: "Proceed to Checkout",
+
+    // miscellaneous
+    loading: "Loading",
+    price_display: "{n, number, ::currency/USD}",
   },
 
   [LOCALES.FRENCH]: {
@@ -64,10 +89,7 @@ export const messages = {
     profile: "MON PROFIL",
     my_cart: "MON SAC",
     shop_now: "COMMENCER À MAGASINER",
-    shop_description:
-      "Une boutique spécialisée dans la livraison de pièces florales contemporaines et personnalisables pour toutes les occasions !",
-    shop_subheader1: "COMPOSITIONS",
-    shop_subheader2: "FLORALES & SUCCULENTES",
+    login: "OUVRIR UNE SESSION",
 
     // page d'accueil
     known_for: "NOUS SOMMES CONNUS POUR",
@@ -78,6 +100,10 @@ export const messages = {
     newsletter:
       "INCRIVEZ-VOUS À NOTRE BULLETIN POUR LES OFFRES & LES MISES À JOUR",
     latest_products: "Les Nouveautés",
+    shop_description:
+      "Une boutique spécialisée dans la livraison de pièces florales contemporaines et personnalisables pour toutes les occasions !",
+    shop_subheader1: "COMPOSITIONS",
+    shop_subheader2: "FLORALES & SUCCULENTES",
 
     // page de contact
     lets_chat: "👋🏽 Salut! On jase. 🌺",
@@ -96,7 +122,31 @@ export const messages = {
     user_profile: "PROFIL DE L'UTLISATEUR",
     past_orders: "MES COMMANDES PASSÉES",
 
+    // login page
+    welcome: "Bienvenue!",
+    no_account: "Pas de compte?",
+    have_account: "Vous avez déjà un compte ?",
+    sign_up: "ENREGISTRER",
+    create_account: "CRÉER UN COMPTE",
+    return_to_store: "RETOURNER AU MAGASIN",
+
     // page de produits
     shop_all: "Magasiner Tous Les Produits",
+    filter_by: "FILTRER PAR",
+    colour: "COULEUR",
+    category: "CATÊGORIE",
+    size: "GRANDEUR",
+
+    // page de product
+    add_to_cart: "AJOUTER AU PANIER",
+    quantity: "Quantité",
+
+    // mon panier
+    shopping_cart: "MON PANIER",
+    proceed_to_checkout: "Passer à la Caisse",
+
+    // divers
+    loading: "Chargement",
+    price_display: "{n, number, ::currency/USD}",
   },
 };

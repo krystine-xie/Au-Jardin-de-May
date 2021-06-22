@@ -13,11 +13,12 @@ import { LOCALES } from "../../i18n/locales";
 import { FormattedMessage } from "react-intl";
 
 const NavBar = (props) => {
+  const locale = localStorage.getItem("locale");
 
   const languages = [
-    { name: "EN",  code: LOCALES.ENGLISH }, 
-    { name: "FR",  code: LOCALES.FRENCH }
-  ]
+    { name: "EN", code: LOCALES.ENGLISH },
+    { name: "FR", code: LOCALES.FRENCH },
+  ];
 
   const [activeItem, setActiveItem] = useState(null);
 
@@ -44,7 +45,7 @@ const NavBar = (props) => {
         active={activeItem === "home"}
         onClick={() => handleItemClick("HOME")}
         link
-      > 
+      >
         <FormattedMessage id="home_page" />
       </Menu.Item>
       <Menu.Item
@@ -76,7 +77,7 @@ const NavBar = (props) => {
       </Menu.Item>
       {userInfo && userInfo.isAdmin && (
         <Menu vertical borderless={true}>
-          <Dropdown item text="ADMIN">
+          <Dropdown item text={locale === "fr-FR" ? "ADMINISTRATEUR" : "ADMIN"}>
             <Dropdown.Menu>
               <Dropdown.Item as={NavLink} to="/admin/userlist">
                 <FormattedMessage id="user_list" />
@@ -94,16 +95,16 @@ const NavBar = (props) => {
 
       <Menu.Menu position="right">
         <div className="switcher">
-          <select 
-            onChange={props.handleLanguageChange} 
+          <select
+            onChange={props.handleLanguageChange}
             className={styles.switcher}
             value={props.currentLocale}
           >
-            {
-              languages.map(({ name, code }) => (
-                <option key={code} value={code}>{name}</option>
-              ))
-              }
+            {languages.map(({ name, code }) => (
+              <option key={code} value={code}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -131,7 +132,9 @@ const NavBar = (props) => {
             name="LOGIN"
             active={activeItem === "login"}
             onClick={() => handleItemClick("LOGIN")}
-          />
+          >
+            <FormattedMessage id="login" />
+          </Menu.Item>
         )}
 
         <Menu.Item
@@ -145,6 +148,6 @@ const NavBar = (props) => {
       </Menu.Menu>
     </Menu>
   );
-}
+};
 
 export default NavBar;
