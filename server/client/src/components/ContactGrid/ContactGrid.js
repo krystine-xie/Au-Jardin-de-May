@@ -6,6 +6,7 @@ import styles from "./ContactGrid.module.css";
 import { FormattedMessage } from "react-intl";
 
 const ContactGrid = () => {
+  const locale = localStorage.getItem("locale");
   return (
     <div className={styles.wrapper}>
       <Grid columns={2} divided>
@@ -13,7 +14,9 @@ const ContactGrid = () => {
           <div className={styles.contactWrapper}>
             <div className={styles.contact}>
               <Icon name="point" size="large" />
-              <span>Hill Valley, California</span>
+              <span>
+                <FormattedMessage id="location" />
+              </span>
             </div>
             <div className={styles.contact}>
               <Icon name="phone" size="large" />
@@ -36,15 +39,25 @@ const ContactGrid = () => {
               enctype="text/plain"
             >
               <Form.Field>
-                <input name="name" placeholder="Your Name" />
+                <input
+                  name="name"
+                  placeholder={locale === "fr-FR" ? "Votre Nom" : "Your Name"}
+                />
               </Form.Field>
               <Form.Field>
-                <input name="email" placeholder="Your Email" />
+                <input
+                  name="email"
+                  placeholder={
+                    locale === "fr-FR" ? "Votre Adresse Courriel" : "Your Email"
+                  }
+                />
               </Form.Field>
               <textarea
                 className={styles.textarea}
                 name="message"
-                placeholder="Your Message"
+                placeholder={
+                  locale === "fr-FR" ? "Votre Message" : "Your Message"
+                }
               />
               <Form.Field></Form.Field>
               <Button type="submit">

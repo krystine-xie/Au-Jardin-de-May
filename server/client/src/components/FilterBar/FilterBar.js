@@ -11,23 +11,25 @@ export default class MenuExampleVerticalText extends Component {
   render() {
     const { activeItem } = this.state;
 
+    const locale = localStorage.getItem("locale");
+
     return (
       <Menu text vertical size="large">
         <Menu.Item header>
           <FormattedMessage id="filter_by" />
         </Menu.Item>
         <Menu.Item
-          name="CATEGORY"
+          name={locale === "fr-FR" ? "CATÊGORIE" : "CATEGORY"}
           active={activeItem === "closest"}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name="COLOUR"
+          name={locale === "fr-FR" ? "COULEUR" : "COLOUR"}
           active={activeItem === "mostComments"}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name="SIZE"
+          name={locale === "fr-FR" ? "GRANDEUR" : "SIZE"}
           active={activeItem === "mostPopular"}
           onClick={this.handleItemClick}
         />

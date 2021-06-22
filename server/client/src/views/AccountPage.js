@@ -14,6 +14,8 @@ import LoaderSpin from "../components/LoaderSpin";
 import { FormattedMessage } from "react-intl";
 
 const AccountPage = ({ history }) => {
+  const locale = localStorage.getItem("locale");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -107,7 +109,11 @@ const AccountPage = ({ history }) => {
                 </Form.Field>
                 <Form.Field>
                   <input
-                    placeholder="Change Password"
+                    placeholder={
+                      locale === "fr-FR"
+                        ? "Changez Mot De Passe"
+                        : "Change Password"
+                    }
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -115,7 +121,11 @@ const AccountPage = ({ history }) => {
                 </Form.Field>
                 <Form.Field>
                   <input
-                    placeholder="Confirm Password"
+                    placeholder={
+                      locale === "fr-FR"
+                        ? "Confirmez Mot De Passe"
+                        : "Confirm Password"
+                    }
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}

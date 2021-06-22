@@ -17,7 +17,11 @@ import { CREATE_PRODUCT_RESET } from "../constants/productConstants";
 
 import styles from "./UserListPage.module.css";
 
+import { FormattedMessage, FormattedNumber } from "react-intl";
+
 function ProductListPage({ history, match }) {
+  const locale = localStorage.getItem("locale");
+
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
@@ -78,7 +82,9 @@ function ProductListPage({ history, match }) {
 
   return (
     <div className={styles.wrapper}>
-      <Header as="h1">PRODUCT LIST</Header>
+      <Header as="h1">
+        <FormattedMessage id="product_list" />
+      </Header>
       {loadingDelete && <LoaderSpin />}
       {errorDelete && <MessageAlert color="red">{errorDelete}</MessageAlert>}
 
@@ -95,10 +101,16 @@ function ProductListPage({ history, match }) {
             <Table.Header>
               <Table.Row textAlign="center">
                 <Table.HeaderCell>ID</Table.HeaderCell>
-                <Table.HeaderCell>PRODUCT NAME</Table.HeaderCell>
-                <Table.HeaderCell>PRICE</Table.HeaderCell>
-                <Table.HeaderCell>CATEGORY</Table.HeaderCell>
-                <Table.HeaderCell>STOCK COUNT</Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="name_of_product" />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="price" />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="category" />
+                </Table.HeaderCell>
+                <Table.HeaderCell>STOCK</Table.HeaderCell>
                 <Table.HeaderCell>ACTIONS</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -107,7 +119,11 @@ function ProductListPage({ history, match }) {
                 <Table.Row key={product._id} textAlign="center">
                   <Table.Cell>{product._id}</Table.Cell>
                   <Table.Cell>{product.name}</Table.Cell>
-                  <Table.Cell>${product.price}</Table.Cell>
+                  <Table.Cell>
+                    {locale === "en-US" ? "$" : ""}
+                    <FormattedNumber value={product.price} style={`currency`} />
+                    {locale === "fr-FR" ? "$" : ""}{" "}
+                  </Table.Cell>
                   <Table.Cell>{product.category}</Table.Cell>
                   <Table.Cell>{product.count_in_stock}</Table.Cell>
                   <Table.Cell>
@@ -136,7 +152,7 @@ function ProductListPage({ history, match }) {
       <br />
 
       <Button icon="plus" color="green" onClick={createProductHandle}>
-        CREATE PRODUCT
+        <FormattedMessage id="create_product" />
       </Button>
     </div>
   );

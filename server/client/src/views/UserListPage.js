@@ -10,6 +10,8 @@ import { Link, withRouter } from "react-router-dom";
 
 import styles from "./UserListPage.module.css";
 
+import { FormattedMessage } from "react-intl";
+
 function UserListPage({ history }) {
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.userList);
@@ -37,7 +39,9 @@ function UserListPage({ history }) {
 
   return (
     <div className={styles.wrapper}>
-      <Header as="h1">USERS</Header>
+      <Header as="h1">
+        <FormattedMessage id="user_list" />
+      </Header>
       {loading ? (
         <LoaderSpin />
       ) : error ? (
@@ -47,9 +51,15 @@ function UserListPage({ history }) {
           <Table.Header>
             <Table.Row textAlign="center">
               <Table.HeaderCell>ID</Table.HeaderCell>
-              <Table.HeaderCell>NAME</Table.HeaderCell>
-              <Table.HeaderCell>EMAIL</Table.HeaderCell>
-              <Table.HeaderCell>ADMIN?</Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="full_name" />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="email" />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="admin_user" />?
+              </Table.HeaderCell>
               <Table.HeaderCell>ACTIONS</Table.HeaderCell>
             </Table.Row>
           </Table.Header>

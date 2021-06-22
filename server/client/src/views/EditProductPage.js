@@ -16,8 +16,11 @@ import {
 } from "../constants/productConstants";
 
 import styles from "./LoginForm.module.css";
+import { FormattedMessage } from "react-intl";
 
 function EditProductPage({ history, match }) {
+  const locale = localStorage.getItem("locale");
+
   const productId = match.params.id;
 
   const [name, setName] = useState("");
@@ -81,10 +84,14 @@ function EditProductPage({ history, match }) {
       {updateError && <MessageAlert>{updateError}</MessageAlert>}
       {error && <MessageAlert color="red">{error}</MessageAlert>}
       {loading && <LoaderSpin />}
-      <Header as="h1">EDIT PRODUCT</Header>
+      <Header as="h1">
+        <FormattedMessage id="edit_product" />
+      </Header>
       <Form onSubmit={updateProductHandler}>
         <Form.Field>
-          <label className={styles.label}>Edit Product Name:</label>
+          <label className={styles.label}>
+            <FormattedMessage id="edit_product_name" />:
+          </label>
           <input
             type="text"
             value={name}
@@ -93,7 +100,10 @@ function EditProductPage({ history, match }) {
         </Form.Field>
 
         <Form.Field>
-          <label className={styles.label}>Edit Product Image URL:</label>
+          <label className={styles.label}>
+            {" "}
+            <FormattedMessage id="edit_product_url" />:
+          </label>
           <input
             type="text"
             value={image}
@@ -102,7 +112,10 @@ function EditProductPage({ history, match }) {
         </Form.Field>
 
         <Form.Field>
-          <label className={styles.label}>Edit Product Price:</label>
+          <label className={styles.label}>
+            {" "}
+            <FormattedMessage id="edit_product_price" />:
+          </label>
           <input
             type="number"
             step="0.01"
@@ -112,7 +125,9 @@ function EditProductPage({ history, match }) {
         </Form.Field>
 
         <Form.Field>
-          <label className={styles.label}>Edit Product Description:</label>
+          <label className={styles.label}>
+            <FormattedMessage id="edit_product_description" />:
+          </label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -122,20 +137,27 @@ function EditProductPage({ history, match }) {
         </Form.Field>
 
         <Form.Field>
-          <label className={styles.label}>Edit Product Category:</label>
+          <label className={styles.label}>
+            {" "}
+            <FormattedMessage id="edit_product_category" />:
+          </label>
           <select
             onChange={(e) => setCategory(e.target.value)}
             defaultValue={category ? category : ""}
           >
             <option value="" disabled>
-              Select Category
+              {locale === "fr-FR"
+                ? "Sélectionner la Catégorie"
+                : "Select Category"}
             </option>
             <option value="Arrangement">Arrangement</option>
             <option value="Succulent">Succulent</option>
           </select>
         </Form.Field>
         <Form.Field>
-          <label className={styles.label}>Edit Product Color:</label>
+          <label className={styles.label}>
+            <FormattedMessage id="edit_product_colour" />:
+          </label>
           <input
             type="text"
             value={color}
@@ -143,7 +165,9 @@ function EditProductPage({ history, match }) {
           />
         </Form.Field>
         <Form.Field>
-          <label className={styles.label}>Edit Product Stock:</label>
+          <label className={styles.label}>
+            <FormattedMessage id="edit_product_stock" />
+          </label>
 
           <input
             type="number"
@@ -152,10 +176,14 @@ function EditProductPage({ history, match }) {
             onChange={(e) => setCountInStock(e.target.value)}
           />
         </Form.Field>
-        <Button type="submit">Edit Product</Button>
+        <Button type="submit">
+          <FormattedMessage id="edit_product" />
+        </Button>
       </Form>
       <br />
-      <Link to="/admin/productlist">Go Back to Product List</Link>
+      <Link to="/admin/productlist">
+        <FormattedMessage id="return_to_product_list" />
+      </Link>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import MessageAlert from "../MessageAlert";
 import { listLatestProducts } from "../../actions/productActions";
 import styles from "./ProductCarousel.module.css";
 
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 
 const ProductCarousel = () => {
   const dispatch = useDispatch();

@@ -33,11 +33,13 @@ export const messages = {
     // contact page
     lets_chat: "👋🏽 Hi there! Let's chat. 🌺",
     your_queries: "Your queries",
+    location: "Mountain View, California",
 
     // buttons
     submit_button: "SUBMIT",
     reset_button: "RESET",
     update_details: "UPDATE",
+    create_product: "CREATE PRODUCT",
 
     // about page
     about_title: "ABOUT AU JARDIN DE MAY",
@@ -73,6 +75,25 @@ export const messages = {
     // miscellaneous
     loading: "Loading",
     price_display: "{n, number, ::currency/USD}",
+
+    // product list
+    price: "PRICE",
+    name_of_product: "PRODUCT NAME",
+
+    // edit product
+    edit_product: "Edit Product",
+    edit_product_name: "Edit Product Name",
+    edit_product_url: "Edit Product Image URL",
+    edit_product_description: "Edit Product Description",
+    edit_product_price: "Edit Product Price",
+    edit_product_colour: "Edit Product Colour",
+    edit_product_category: "Edit Product Category",
+    edit_product_stock: "Edit Product Stock",
+    return_to_product_list: "Return to Product List",
+
+    // user list
+    full_name: "FULL NAME",
+    email: "EMAIL",
   },
 
   [LOCALES.FRENCH]: {
@@ -87,7 +108,7 @@ export const messages = {
     order_list: "Liste de Commandes",
     log_out: "DÉCONNEXION",
     profile: "MON PROFIL",
-    my_cart: "MON SAC",
+    my_cart: "MON PANIER",
     shop_now: "COMMENCER À MAGASINER",
     login: "OUVRIR UNE SESSION",
 
@@ -108,11 +129,13 @@ export const messages = {
     // page de contact
     lets_chat: "👋🏽 Salut! On jase. 🌺",
     your_queries: "VOS REQUÊTES",
+    location: "Mountain View, Californie",
 
     // les boutons
     submit_button: "SOUMETTRE",
     reset_button: "RÉINITIALISER",
     update_details: "METTRE À JOUR",
+    create_product: "CRÉER UN PRODUIT",
 
     // about page
     about_title: "À PROPOS D'AU JARDIN DE MAY",
@@ -148,5 +171,24 @@ export const messages = {
     // divers
     loading: "Chargement",
     price_display: "{n, number, ::currency/USD}",
+
+    //liste de produit
+    price: "PRIX",
+    name_of_product: "NOM DU PRODUIT",
+
+    // edit product
+    edit_product: "Modifier le Produit",
+    edit_product_name: "Modifier Nom du Produit",
+    edit_product_url: "Modifier l'Image du Produit",
+    edit_product_description: "Modifier le Description du Produit",
+    edit_product_price: "Modifier le Prix du Produit",
+    edit_product_colour: "Modifier la Couleur du Produit",
+    edit_product_category: "Modifier la Catégorie du Produit",
+    edit_product_stock: "Modifier le Stock du Produit",
+    return_to_product_list: "Retourner à la Liste de Produits",
+
+    //liste d'utilisateur
+    full_name: "NOM COMPLET",
+    email: "ADRESSE COURRIEL",
   },
 };
