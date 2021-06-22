@@ -22,9 +22,9 @@ https://au-jardin-de-may.herokuapp.com/
   * Client can save shipping + billing address and payment detail securely
   * Admin user can add products, and edit users, products, and order details. 
   * Home Page displays the 5 most recently added products onto the database, while the store displays all the products
+  * Through localisation, client is able to toggle webpage between French and English
 
 ## Future Features
- * Introduce localisation to e-commerce application 
  * Client will be able to filter through products based on colour, size, category
  * Add subscription and contact functionality
 
