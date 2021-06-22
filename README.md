@@ -42,4 +42,6 @@ https://au-jardin-de-may.herokuapp.com/
 ## Related Links
   * Semantic-UI-React: https://react.semantic-ui.com/
   * Django REST Framework: https://www.django-rest-framework.org/
+  * Paypal API: https://developer.paypal.com/docs/api/overview/
+  * React-Intl: https://formatjs.io/docs/getting-started/installation/
 
