@@ -11,6 +11,7 @@ import { getMyOrders } from "../actions/orderActions";
 
 import MessageAlert from "../components/MessageAlert";
 import LoaderSpin from "../components/LoaderSpin";
+import { FormattedMessage } from "react-intl";
 
 const AccountPage = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -79,7 +80,9 @@ const AccountPage = ({ history }) => {
         <Grid>
           <Grid.Row>
             <Grid.Column width={4}>
-              <h2>USER PROFILE</h2>
+              <h2>
+                <FormattedMessage id="user_profile" />
+              </h2>
               {message && <MessageAlert color="red">{message}</MessageAlert>}
               {error && <MessageAlert color="red">{error}</MessageAlert>}
               {loading && <LoaderSpin />}
@@ -118,11 +121,15 @@ const AccountPage = ({ history }) => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </Form.Field>
-                <Button type="submit">UPDATE DETAILS</Button>
+                <Button type="submit">
+                  <FormattedMessage id="update_details" />
+                </Button>
               </Form>
             </Grid.Column>
             <Grid.Column width={12}>
-              <h2>MY PAST ORDERS</h2>
+              <h2>
+                <FormattedMessage id="past_orders" />
+              </h2>
               {loadingOrders ? (
                 <LoaderSpin />
               ) : errorOrders ? (

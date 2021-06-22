@@ -3,6 +3,8 @@ import { Grid, Icon, Form, Button } from "semantic-ui-react";
 
 import styles from "./ContactGrid.module.css";
 
+import { FormattedMessage } from "react-intl";
+
 const ContactGrid = () => {
   return (
     <div className={styles.wrapper}>
@@ -25,7 +27,9 @@ const ContactGrid = () => {
         </Grid.Column>
         <Grid.Column>
           <div className={styles.form}>
-            <h3>YOUR QUERIES</h3>
+            <h3>
+              <FormattedMessage id="your_queries" />
+            </h3>
             <Form
               action="mailto:krystinex@gmail.com"
               method="post"
@@ -43,8 +47,12 @@ const ContactGrid = () => {
                 placeholder="Your Message"
               />
               <Form.Field></Form.Field>
-              <Button type="submit">Submit</Button>
-              <Button type="reset">Reset</Button>
+              <Button type="submit">
+                <FormattedMessage id="submit_button" />
+              </Button>
+              <Button type="reset">
+                <FormattedMessage id="reset_button" />
+              </Button>
             </Form>
           </div>
         </Grid.Column>

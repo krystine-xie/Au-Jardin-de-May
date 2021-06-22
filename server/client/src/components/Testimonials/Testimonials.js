@@ -3,6 +3,8 @@ import { Segment, Icon } from 'semantic-ui-react';
 
 import styles from './Testimonials.module.css';
 
+import { FormattedMessage } from "react-intl";
+
 const Testimonials = (props) => {
 
     return (
@@ -11,7 +13,7 @@ const Testimonials = (props) => {
             padded='very'
             className='testimonials'
         >
-            <h3>CUSTOMER TESTIMONIALS</h3>
+            <h3><FormattedMessage id="testimonials" /></h3>
             <div>
                 <div className='testimonials'>
                     <div className={styles.rating}>

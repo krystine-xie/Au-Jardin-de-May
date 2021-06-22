@@ -3,12 +3,16 @@ import { Container } from "semantic-ui-react";
 
 import styles from "./StorePage.module.css";
 
+import { FormattedMessage } from "react-intl";
+
 const AboutPage = (props) => {
   return (
     <div>
       <div className={styles.aboutUs}>
         <Container textAlign="center">
-          <h2>ABOUT AU JARDIN DE MAY</h2>
+          <h2>
+            <FormattedMessage id="about_title" />
+          </h2>
           <p>
             Au Jardin de May is an e-commerce website built to showcase my
             mother's (May) flowers and succulent arrangements. All of the
@@ -35,7 +39,10 @@ const AboutPage = (props) => {
           </p>
           <hr />
           <p>
-            <span>Full Stack Developer:</span> Krystine Xie (
+            <span>
+              <FormattedMessage id="fullstack" />:
+            </span>{" "}
+            Krystine Xie (
             <a href="mailto: krystinex@gmail.com">krystinex@gmail.com</a>)
           </p>
         </Container>

@@ -1,5 +1,9 @@
 import { React } from 'react';
 
+// react-intl
+import { LOCALES } from "../i18n/locales";
+import { FormattedMessage } from "react-intl";
+
 import ContactGrid from '../components/ContactGrid/ContactGrid';
 
 const ContactPage = (props) => {
@@ -7,7 +11,7 @@ const ContactPage = (props) => {
     return (
         <div>
             <div>
-               <h1>👋🏽 Hi there! Let's chat 🌺</h1>
+               <h1><FormattedMessage id="lets_chat" /></h1>
                <ContactGrid />
             </div>
    

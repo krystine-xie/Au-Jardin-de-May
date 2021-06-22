@@ -9,6 +9,8 @@ import MessageAlert from "../MessageAlert";
 import { listLatestProducts } from "../../actions/productActions";
 import styles from "./ProductCarousel.module.css";
 
+import { FormattedMessage } from "react-intl";
+
 const ProductCarousel = () => {
   const dispatch = useDispatch();
 
@@ -25,7 +27,9 @@ const ProductCarousel = () => {
     <MessageAlert color="red">{error}</MessageAlert>
   ) : (
     <div className={styles.carouselWrapper}>
-      <h1>Latest Products</h1>
+      <h1>
+        <FormattedMessage id="latest_products" />
+      </h1>
       <Carousel
         pause="hover"
         width={500}

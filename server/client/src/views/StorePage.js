@@ -10,6 +10,7 @@ import Paginator from "../components/Paginator/Paginator";
 import styles from "./StorePage.module.css";
 
 import { listProducts } from "../actions/productActions";
+import { FormattedMessage } from "react-intl";
 
 const StorePage = ({ history }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ const StorePage = ({ history }) => {
   return (
     <div>
       <div className={styles.storeWrapper}>
-        <h1>Shop All Products</h1>
+        <h1>
+          <FormattedMessage id="shop_all" />
+        </h1>
         {loading ? (
           <LoaderSpin />
         ) : error ? (

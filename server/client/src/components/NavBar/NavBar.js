@@ -10,6 +10,7 @@ import styles from "./NavBar.module.css";
 
 // react-intl
 import { LOCALES } from "../../i18n/locales";
+import { FormattedMessage } from "react-intl";
 
 const NavBar = (props) => {
 
@@ -44,6 +45,7 @@ const NavBar = (props) => {
         onClick={() => handleItemClick("HOME")}
         link
       > 
+        <FormattedMessage id="home_page" />
       </Menu.Item>
       <Menu.Item
         as={NavLink}
@@ -51,33 +53,39 @@ const NavBar = (props) => {
         name="ABOUT"
         active={activeItem === "about"}
         onClick={() => handleItemClick("ABOUT")}
-      />
+      >
+        <FormattedMessage id="about_page" />
+      </Menu.Item>
       <Menu.Item
         as={NavLink}
         to="/store"
         name="STORE"
         active={activeItem === "store"}
         onClick={() => handleItemClick("STORE")}
-      />
+      >
+        <FormattedMessage id="store_page" />
+      </Menu.Item>
       <Menu.Item
         as={NavLink}
         to="/contact"
         name="CONTACT US"
         active={activeItem === "CONTACT"}
         onClick={() => handleItemClick("CONTACT")}
-      />
+      >
+        <FormattedMessage id="contact_us" />
+      </Menu.Item>
       {userInfo && userInfo.isAdmin && (
         <Menu vertical borderless={true}>
           <Dropdown item text="ADMIN">
             <Dropdown.Menu>
               <Dropdown.Item as={NavLink} to="/admin/userlist">
-                User List
+                <FormattedMessage id="user_list" />
               </Dropdown.Item>
               <Dropdown.Item as={NavLink} to="/admin/productlist">
-                Product List
+                <FormattedMessage id="product_list" />
               </Dropdown.Item>
               <Dropdown.Item as={NavLink} to="/admin/orderlist">
-                Order List
+                <FormattedMessage id="order_list" />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -86,7 +94,11 @@ const NavBar = (props) => {
 
       <Menu.Menu position="right">
         <div className="switcher">
-          <select className={styles.switcher}>
+          <select 
+            onChange={props.handleLanguageChange} 
+            className={styles.switcher}
+            value={props.currentLocale}
+          >
             {
               languages.map(({ name, code }) => (
                 <option key={code} value={code}>{name}</option>
@@ -104,10 +116,10 @@ const NavBar = (props) => {
             <Dropdown item text={userInfo.name.toUpperCase()}>
               <Dropdown.Menu>
                 <Dropdown.Item as={NavLink} to="/profile">
-                  Profile
+                  <FormattedMessage id="profile" />
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => handleLogout()}>
-                  Log Out
+                  <FormattedMessage id="log_out" />
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

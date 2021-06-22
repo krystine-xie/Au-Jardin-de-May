@@ -3,19 +3,21 @@ import { Form, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
+import { FormattedMessage } from "react-intl";
+
 const Footer = () => {
   return (
     <div>
       <div className={styles.newsletterDiv}>
         <h1 className={styles.newsletterHeader}>
           {" "}
-          JOIN OUR NEWSLETTER FOR UPDATES & DEALS{" "}
+          <FormattedMessage id="newsletter" />{" "}
         </h1>
         <div className={styles.emailInput}>
           <Form success>
             <Form.Input placeholder="hello@jdm.com" />
             <Button inverted color="grey">
-              Submit
+              <FormattedMessage id="submit_button" />
             </Button>
           </Form>
         </div>
@@ -28,16 +30,16 @@ const Footer = () => {
       </div>
       <div className={styles.footerNav}>
         <Link to="/about" className={styles.footerLink}>
-          ABOUT
+          <FormattedMessage id="about_page" />
         </Link>
         <Link to="/store" className={styles.footerLink}>
-          STORE
+          <FormattedMessage id="store_page" />
         </Link>
         <Link to="/cart" className={styles.footerLink}>
-          YOUR CART
+          <FormattedMessage id="my_cart" />
         </Link>
         <Link to="/contact" className={styles.footerLink}>
-          CONTACT US
+          <FormattedMessage id="contact_us" />
         </Link>
       </div>
 
