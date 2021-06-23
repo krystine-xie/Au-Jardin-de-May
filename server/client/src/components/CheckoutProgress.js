@@ -46,7 +46,11 @@ function CheckoutProgress({ step1, step2, step3, step4 }) {
       )}
 
       {step4 ? (
-        <Menu.Item as={NavLink} to="/placeorder" name="PLACE ORDER" />
+        <Menu.Item
+          as={NavLink}
+          to="/placeorder"
+          name={locale === "fr-FR" ? "PASSER LA COMMANDE" : "PLACE ORDER"}
+        />
       ) : (
         <Menu.Item
           disabled
