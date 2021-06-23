@@ -7,6 +7,7 @@ import CheckoutProgress from "../components/CheckoutProgress";
 import styles from "./LoginForm.module.css";
 import states from "../constants/states";
 import { saveShippingAddress } from "../actions/cartActions";
+import { FormattedMessage } from "react-intl";
 
 function ShippingPage({ history }) {
   const cart = useSelector((state) => state.cart);
@@ -20,6 +21,8 @@ function ShippingPage({ history }) {
 
   const dispatch = useDispatch();
 
+  const locale = localStorage.getItem("locale");
+
   const shippingHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({ address, city, zipCode, state1, country }));
@@ -31,13 +34,15 @@ function ShippingPage({ history }) {
     <div>
       <CheckoutProgress step1 step2 />
       <div className={styles.shippingWrapper}>
-        <h1 className={styles.header}>ENTER SHIPPING ADDRESS</h1>
+        <h1 className={styles.header}>
+          <FormattedMessage id="enter_shipping_address" />
+        </h1>
         <Form onSubmit={shippingHandler}>
           <Form.Field>
             <input
               required
               name="address"
-              placeholder="Enter Address"
+              placeholder={locale === "fr-FR" ? "Adresse" : "Enter Address"}
               type="text"
               value={address ? address : ""}
               onChange={(e) => setAddress(e.target.value)}
@@ -47,7 +52,7 @@ function ShippingPage({ history }) {
             <input
               required
               name="city"
-              placeholder="Enter City"
+              placeholder={locale === "fr-FR" ? "Ville" : "Enter City"}
               type="text"
               value={city ? city : ""}
               onChange={(e) => setCity(e.target.value)}
@@ -60,7 +65,7 @@ function ShippingPage({ history }) {
               defaultValue={state1 ? state1 : ""}
             >
               <option value="" disabled>
-                Select State
+                {locale === "fr-FR" ? "Sélectionnez l'État:" : "Select State:"}
               </option>
               {states.map((s, key) => {
                 return (
@@ -75,7 +80,9 @@ function ShippingPage({ history }) {
             <input
               required
               name="zipCode"
-              placeholder="Enter Zip Code"
+              placeholder={
+                locale === "fr-FR" ? "Code Postale" : "Enter Zip Code"
+              }
               type="text"
               value={zipCode ? zipCode : ""}
               onChange={(e) => setZipCode(e.target.value)}
@@ -85,13 +92,15 @@ function ShippingPage({ history }) {
             <input
               required
               name="country"
-              placeholder="Enter Country"
+              placeholder={locale === "fr-FR" ? "Pays" : "Enter Country"}
               type="text"
               value={country ? country : ""}
               onChange={(e) => setCountry(e.target.value)}
             />
           </Form.Field>
-          <Button type="submit">PROCEED TO CHECKOUT</Button>
+          <Button type="submit">
+            <FormattedMessage id="proceed_to_checkout" />
+          </Button>
         </Form>
       </div>
     </div>

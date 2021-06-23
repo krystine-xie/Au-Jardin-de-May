@@ -14,36 +14,26 @@ const AboutPage = (props) => {
             <FormattedMessage id="about_title" />
           </h2>
           <p>
-            Au Jardin de May is an e-commerce website built to showcase my
-            mother's (May) flowers and succulent arrangements. All of the
-            "products" shown on this website were handmade by her and
-            subsequently gifted to friends and family.
+            <FormattedMessage id="first_about_p" />
           </p>
           <p>
-            The website's front-end is build with{" "}
-            <span>ReactJS, Semantic UI</span> and <span>vanilla CSS</span> with
-            responsiveness in mind, and the back-end is built with{" "}
-            <span>Python</span> through the <span>Django Framework</span>. The
-            RESTful API was built with <span>Django Rest Framework</span>. The
-            front-end state is managed through the use of{" "}
-            <span>Redux + Redux DevTools</span> for debugging purposes.
+            <FormattedMessage id="second_about_p" />
           </p>
 
           <p>
-            Au Jardin De May uses <span>PostGreSQL</span> for its database.
+            <FormattedMessage id="third_about_p" />
           </p>
 
           <p>
-            Additionally, this website integrates the <span>Paypal API</span> to
-            manage the payments (using Sandbox test accounts).
+            <FormattedMessage id="fourth_about_p" />
           </p>
           <hr />
           <p>
             <span>
               <FormattedMessage id="fullstack" />:
             </span>{" "}
-            Krystine Xie (
-            <a href="mailto: krystinex@gmail.com">krystinex@gmail.com</a>)
+            Krystine Xie (<a href="mailto: krystinex@gmail.com">Email</a> •{" "}
+            <a href="https://www.github.com/krystine-xie">GitHub</a>)
           </p>
         </Container>
       </div>

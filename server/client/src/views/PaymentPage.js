@@ -7,7 +7,11 @@ import CheckoutProgress from "../components/CheckoutProgress";
 import styles from "./LoginForm.module.css";
 import { savePaymentMethod } from "../actions/cartActions";
 
+import { FormattedMessage } from "react-intl";
+
 function PaymentPage({ history }) {
+  const locale = localStorage.getItem("locale");
+
   const [paymentMethod, setPaymentMethod] = useState("PayPal");
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
@@ -29,7 +33,9 @@ function PaymentPage({ history }) {
       <CheckoutProgress step1 step2 step3 />
       <div className={styles.paymentWrapper}>
         <Form onSubmit={paymentHandler}>
-          <h2>SELECT PAYMENT METHOD:</h2>
+          <h2>
+            <FormattedMessage id="select_payment" />:
+          </h2>
           <Form.Field
             label="PayPal"
             control="input"
@@ -40,14 +46,16 @@ function PaymentPage({ history }) {
             onChange={(e) => setPaymentMethod(e.target.value)}
           />
           <Form.Field
-            label="Credit Card"
+            label={locale === "fr-FR" ? "Carte de Crédit" : "Credit Card"}
             control="input"
             type="radio"
             name="paymentMethod"
             value="Credit Card"
             onChange={(e) => setPaymentMethod(e.target.value)}
           />
-          <Button type="submit">PROCEED TO PLACE ORDER</Button>
+          <Button type="submit">
+            <FormattedMessage id="proceed_to_checkout" />
+          </Button>
         </Form>
       </div>
     </div>

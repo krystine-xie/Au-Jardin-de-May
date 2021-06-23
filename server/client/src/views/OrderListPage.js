@@ -9,6 +9,7 @@ import MessageAlert from "../components/MessageAlert";
 import { getAllOrders } from "../actions/orderActions";
 
 import styles from "./UserListPage.module.css";
+import { FormattedMessage } from "react-intl";
 
 function OrderListPage({ history }) {
   const dispatch = useDispatch();
@@ -28,7 +29,9 @@ function OrderListPage({ history }) {
 
   return (
     <div className={styles.wrapper}>
-      <Header as="h1">ORDER LIST</Header>
+      <Header as="h1">
+        <FormattedMessage id="order_list" />
+      </Header>
       {loading ? (
         <LoaderSpin />
       ) : error ? (
@@ -38,11 +41,19 @@ function OrderListPage({ history }) {
           <Table.Header>
             <Table.Row textAlign="center">
               <Table.HeaderCell>ID</Table.HeaderCell>
-              <Table.HeaderCell>USER FULL NAME</Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="full_name" />
+              </Table.HeaderCell>
               <Table.HeaderCell>DATE</Table.HeaderCell>
-              <Table.HeaderCell>AMOUNT PAID</Table.HeaderCell>
-              <Table.HeaderCell>PAID?</Table.HeaderCell>
-              <Table.HeaderCell>DELIVERED?</Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="amount_paid" />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="paid" />?
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="delivered" />?
+              </Table.HeaderCell>
               <Table.HeaderCell>ACTIONS</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -74,7 +85,7 @@ function OrderListPage({ history }) {
                     as={Link}
                     to={`/order/${order._id}`}
                   >
-                    ORDER DETAILS
+                    <FormattedMessage id="details" />
                   </Button>
                 </Table.Cell>
               </Table.Row>

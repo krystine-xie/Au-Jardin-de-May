@@ -1,5 +1,4 @@
 import React from "react";
-import { Pagination } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import styles from "./Paginator.module.css";

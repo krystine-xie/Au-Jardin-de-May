@@ -12,6 +12,7 @@ import styles from "./ProductCarousel.module.css";
 import { FormattedMessage, FormattedNumber } from "react-intl";
 
 const ProductCarousel = () => {
+  const locale = localStorage.getItem("locale");
   const dispatch = useDispatch();
 
   const latestProductsList = useSelector((state) => state.latestProductsList);
@@ -40,7 +41,9 @@ const ProductCarousel = () => {
         {products.map((product) => (
           <div key={product._id}>
             <h4>
-              {product.name} - (${product.price})
+              {product.name} - ({locale === "en-US" ? "$" : ""}{" "}
+              <FormattedNumber value={product.price} style={`currency`} />{" "}
+              {locale === "fr-FR" ? "$" : ""})
             </h4>
             <Link to={`/collection/${product._id}`}>
               <img src={product.image} alt={product.name} />

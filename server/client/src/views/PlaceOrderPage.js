@@ -9,7 +9,10 @@ import MessageAlert from "../components/MessageAlert";
 import { createOrder } from "../actions/orderActions";
 import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 
+import { FormattedMessage, FormattedNumber } from "react-intl";
+
 function PlaceOrderPage({ history }) {
+  const locale = localStorage.getItem("locale");
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, error, success } = orderCreate;
 
@@ -63,9 +66,14 @@ function PlaceOrderPage({ history }) {
           <Grid.Column width={10}>
             <List>
               <List.Item>
-                <h2>SHIPPING ADDRESS:</h2>
+                <h2>
+                  <FormattedMessage id="shipping_address" />:
+                </h2>
                 <p>
-                  <strong>Ship To: </strong> <br />
+                  <strong>
+                    <FormattedMessage id="shipping_to" />{" "}
+                  </strong>{" "}
+                  <br />
                   {cart.shippingAddress.address} <br />{" "}
                   {cart.shippingAddress.city},{"    "}{" "}
                   {cart.shippingAddress.state1} {"    "} <br />
@@ -75,17 +83,27 @@ function PlaceOrderPage({ history }) {
               </List.Item>
               <Divider />
               <List.Item>
-                <h2>PAYMENT METHOD:</h2>
+                <h2>
+                  <FormattedMessage id="payment_method" />:
+                </h2>
                 <p>
-                  <strong>Payment Selected: </strong>
+                  <strong>
+                    <FormattedMessage id="selected_payment" />:{" "}
+                  </strong>
                   {cart.paymentMethod}
                 </p>
               </List.Item>
               <Divider />
               <List.Item>
-                <h2>ORDER ITEMS:</h2>
+                <h2>
+                  <FormattedMessage id="order_items" />:
+                </h2>
                 {cart.cartItems.length === 0 ? (
-                  <MessageAlert color="red">Your cart is empty!</MessageAlert>
+                  <MessageAlert color="red">
+                    {locale === "fr-FR"
+                      ? "Votre panier est vide!"
+                      : "Your cart is empty!"}
+                  </MessageAlert>
                 ) : (
                   <List>
                     {cart.cartItems.map((item, index) => (
@@ -108,7 +126,13 @@ function PlaceOrderPage({ history }) {
                             </Grid.Column>
                             <Grid.Column width={6}>
                               <h3>
-                                {item.quantity} x $ ${item.price} = $
+                                {item.quantity} x{" "}
+                                {locale === "en-US" ? "$" : ""}{" "}
+                                <FormattedNumber
+                                  value={item.price}
+                                  style={`currency`}
+                                />{" "}
+                                {locale === "fr-FR" ? "$" : ""} = $
                                 {(item.quantity * item.price).toFixed(2)}
                               </h3>
                             </Grid.Column>
@@ -124,13 +148,17 @@ function PlaceOrderPage({ history }) {
 
           <Grid.Column width={5}>
             <Card fluid>
-              <h2>ORDER SUMMARY</h2>
+              <h2>
+                <FormattedMessage id="order_summary" />
+              </h2>
               <List>
                 <List.Item>
                   <Grid celled>
                     <Grid.Row>
                       <Grid.Column width={8}>
-                        <h3>ITEM:</h3>
+                        <h3>
+                          <FormattedMessage id="items" />:
+                        </h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
                         <h4>${cart.itemsPrice}</h4>
@@ -138,7 +166,9 @@ function PlaceOrderPage({ history }) {
                     </Grid.Row>
                     <Grid.Row>
                       <Grid.Column width={8}>
-                        <h3>SHIPPING:</h3>
+                        <h3>
+                          <FormattedMessage id="shipping" />:
+                        </h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
                         <h4>${cart.shippingPrice}</h4>
@@ -146,10 +176,17 @@ function PlaceOrderPage({ history }) {
                     </Grid.Row>
                     <Grid.Row>
                       <Grid.Column width={8}>
-                        <h3>TAX:</h3>
+                        <h3>TAXES:</h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${cart.tax}</h4>
+                        <h4>
+                          {locale === "en-US" ? "$" : ""}{" "}
+                          <FormattedNumber
+                            value={cart.tax}
+                            style={`currency`}
+                          />{" "}
+                          {locale === "fr-FR" ? "$" : ""}
+                        </h4>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -157,7 +194,14 @@ function PlaceOrderPage({ history }) {
                         <h3>TOTAL:</h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${cart.totalPrice}</h4>
+                        <h4>
+                          {locale === "en-US" ? "$" : ""}{" "}
+                          <FormattedNumber
+                            value={cart.totalPrice}
+                            style={`currency`}
+                          />{" "}
+                          {locale === "fr-FR" ? "$" : ""}
+                        </h4>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
@@ -174,7 +218,7 @@ function PlaceOrderPage({ history }) {
                     fluid
                     onClick={placeOrderHandler}
                   >
-                    CONFIRM ORDER
+                    <FormattedMessage id="confirm_order" />
                   </Button>
                 </List.Item>
               </List>

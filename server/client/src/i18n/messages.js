@@ -17,6 +17,15 @@ export const messages = {
     shop_now: "SHOP NOW",
     login: "LOGIN",
 
+    // about page
+    first_about_p:
+      "Au Jardin de May is an e-commerce website built to showcase my mother's (May) flowers and succulent arrangements. All of the 'products' shown on this website were handmade by her and subsequently gifted to friends and family.",
+    second_about_p:
+      "The website's front-end is build with REACTJS, SEMANTIC UI and VANILLA CSS with responsiveness in mind, and the back-end is built with PYTHON through the DJANGO FRAMEWORK. The RESTful API was built with DJANGO REST FRAMEWORK. The front-end state is managed through the use of REDUX + REDUX DEVTOOLS for debugging purposes.",
+    third_about_p: "Au Jardin De May uses POSTGRESQL for its database.",
+    fourth_about_p:
+      "Additionally, this website integrates the PAYPAL API to manage the payments (using Sandbox test accounts). Localisation is managed through React-Intl.",
+
     //home page
     known_for: "WHAT WE'RE KNOWN FOR",
     contemporary: "CONTEMPORARY",
@@ -32,7 +41,7 @@ export const messages = {
 
     // contact page
     lets_chat: "👋🏽 Hi there! Let's chat. 🌺",
-    your_queries: "Your queries",
+    your_queries: "YOUR QUERIES",
     location: "Mountain View, California",
 
     // buttons
@@ -71,14 +80,25 @@ export const messages = {
     // shopping cart
     shopping_cart: "SHOPPING CART",
     proceed_to_checkout: "Proceed to Checkout",
+    subtotal: "SUBTOTAL",
+    items: "ITEMS",
 
     // miscellaneous
     loading: "Loading",
     price_display: "{n, number, ::currency/USD}",
+    warning: "WARNING",
+    error: "ERROR",
+    success: "SUCCESS",
 
     // product list
     price: "PRICE",
     name_of_product: "PRODUCT NAME",
+
+    // order list
+    amount_paid: "AMOUNT PAID",
+    paid: "PAID",
+    delivered: "DELIVERED",
+    details: "DETAILS",
 
     // edit product
     edit_product: "Edit Product",
@@ -94,6 +114,31 @@ export const messages = {
     // user list
     full_name: "FULL NAME",
     email: "EMAIL",
+
+    // shipping
+    enter_shipping_address: "ENTER SHIPPING ADDRESS",
+
+    //payment
+    select_payment: "SELECT PAYMENT METHOD",
+    credit_cart: "Credit Card",
+
+    // vérification
+    order_summary: "ORDER SUMMARY",
+    place_order: "PLACE ORDER",
+    payment_method: "PAYMENT METHOD",
+    order_items: "ORDER ITEMS",
+    shipping_to: "Ship to",
+    confirm_order: "Confirm Order",
+    shipping: "SHIPPING",
+    order_number: "ORDER #",
+    shipping_address: "SHIPPING ADDRESS",
+    selected_payment: "Selected Payment",
+    not_yet_delivered: "Not Yet Delivered",
+    not_yet_paid: "Not Yet Paid",
+    paid_on: "Paid on",
+    delivered_on: "Delivered on",
+    order_empty: "Your order is empty!",
+    mark_delivered: "Mark as Delivered",
   },
 
   [LOCALES.FRENCH]: {
@@ -125,6 +170,16 @@ export const messages = {
       "Une boutique spécialisée dans la livraison de pièces florales contemporaines et personnalisables pour toutes les occasions !",
     shop_subheader1: "COMPOSITIONS",
     shop_subheader2: "FLORALES & SUCCULENTES",
+
+    // about page
+    first_about_p:
+      "Au Jardin de May est un site web de commerce électronique conçu pour présenter les compositions florales et succulentes de ma mère (May). Tous le 'produits' présentés ici ont été fabriqués à la main par elle et ensuite offerts aux amis et aux membres de famille.",
+    second_about_p:
+      "Le front-end du site Web est construit avec REACTJS, SEMANTIC UI et VANILLA CSS dans un souci de réactivité, et le back-end est construit avec PYTHON via le CADRE DJANGO. L'API RESTful a été construite avec DJANGO REST FRAMEWORK. L'état du front-end est géré par l'utilisation de REDUX + REDUX DEVTOOLS aux fins de débogage.",
+    third_about_p:
+      "Au Jardin De May utilise POSTGRESQL pour sa base de données.",
+    fourth_about_p:
+      "Enfin, ce site Web intègre l'API PAYPAL pour gérer les paiements (à l'aide de comptes de test Sandbox). La localisation est gérée par React-Intl.",
 
     // page de contact
     lets_chat: "👋🏽 Salut! On jase. 🌺",
@@ -167,14 +222,25 @@ export const messages = {
     // mon panier
     shopping_cart: "MON PANIER",
     proceed_to_checkout: "Passer à la Caisse",
+    subtotal: "SOUS-TOTAL",
+    items: "ARTICLES",
 
     // divers
     loading: "Chargement",
     price_display: "{n, number, ::currency/USD}",
+    warning: "ATTENTION",
+    error: "ERREUR",
+    success: "SUCCÈS",
 
     //liste de produit
     price: "PRIX",
     name_of_product: "NOM DU PRODUIT",
+
+    // list de commandes
+    amount_paid: "MONTANT PAYÉ",
+    paid: "PAYÉ",
+    delivered: "LIVRÉ",
+    details: "DÉTAILS",
 
     // edit product
     edit_product: "Modifier le Produit",
@@ -190,5 +256,30 @@ export const messages = {
     //liste d'utilisateur
     full_name: "NOM COMPLET",
     email: "ADRESSE COURRIEL",
+
+    // shipping
+    enter_shipping_address: "SAISIR L'ADRESSE DE LIVRAISON",
+
+    //payment
+    select_payment: "CHOISIR MÉTHODE DE PAIEMENT",
+    credit_cart: "Carte de Crédit",
+
+    // vérification
+    order_summary: "APPERÇU DE LA COMMANDE",
+    place_order: "PASSER LA COMMANDE",
+    payment_method: "MÉTHODE DE PAIEMENT",
+    order_items: "ARTICLES COMMANDÉS",
+    shipping_to: "Expédition à:",
+    confirm_order: "Confirmer la Commande",
+    shipping: "LIVRAISON",
+    shipping_address: "ADRESSE DE LIVRAISON",
+    order_number: "COMMANDE NO.",
+    selected_payment: "Paiement Sélectionné",
+    not_yet_delivered: "Pas Encore Livré",
+    not_yet_paid: "Pas Encore Payé",
+    paid_on: "Payé le",
+    delivered_on: "Livré le",
+    order_empty: "Votre commande est vide!",
+    mark_delivered: "Marquer Comme Livré",
   },
 };

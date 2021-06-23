@@ -105,9 +105,10 @@ const ShoppingCartPage = ({ location, history }) => {
                 <List>
                   <List.Item>
                     <h2>
-                      SUBTOTAL (
-                      {cartItems.reduce((acc, item) => acc + item.quantity, 0)})
-                      ITEMS:
+                      <FormattedMessage id="subtotal" /> (
+                      {cartItems.reduce((acc, item) => acc + item.quantity, 0)}){" "}
+                      {"  "}
+                      <FormattedMessage id="items" />
                     </h2>
                     <h3>
                       $

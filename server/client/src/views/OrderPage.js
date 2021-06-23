@@ -27,8 +27,11 @@ import {
   updateOrderToPaid,
   updateOrderToDelivered,
 } from "../actions/orderActions";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 
 function OrderPage({ match, history }) {
+  const locale = localStorage.getItem("locale");
+
   const orderId = match.params.id;
   const dispatch = useDispatch();
 
@@ -105,22 +108,36 @@ function OrderPage({ match, history }) {
       <Grid>
         <Grid.Row>
           <Grid.Column width={10}>
-            <h1>Order #{order._id}</h1>
+            <h1>
+              <FormattedMessage id="order_number" />
+              {order._id}
+            </h1>
             <List>
               <List.Item>
-                <Header as="h2">SHIPPING ADDRESS:</Header>
+                <Header as="h2">
+                  <FormattedMessage id="shipping_address" />:
+                </Header>{" "}
+                <br />
                 <p>
-                  <strong>Name: </strong> {order.user.name}
+                  <strong>
+                    <FormattedMessage id="full_name" />:
+                  </strong>{" "}
+                  {order.user.name}
                 </p>
                 <p>
-                  <strong>Email: </strong>{" "}
+                  <strong>
+                    <FormattedMessage id="email" />:{" "}
+                  </strong>{" "}
                   <a href={`mailto:${order.user.email}`}>
                     {" "}
                     {order.user.email}{" "}
                   </a>
                 </p>
                 <p>
-                  <strong>Ship To: </strong> <br />
+                  <strong>
+                    <FormattedMessage id="shipping_to" />{" "}
+                  </strong>{" "}
+                  <br />
                   {order.shipping_address.address} <br />{" "}
                   {order.shipping_address.city},{"    "}{" "}
                   {order.shipping_address.state1} {"    "} <br />
@@ -129,34 +146,44 @@ function OrderPage({ match, history }) {
                 </p>
                 {order.is_delivered ? (
                   <MessageAlert color="green">
-                    Delivered on: {order.delivered_at}
+                    <FormattedMessage id="delivered_on" />: {order.delivered_at}
                   </MessageAlert>
                 ) : (
-                  <MessageAlert color="yellow">Not Yet Delivered</MessageAlert>
+                  <MessageAlert color="yellow">
+                    <FormattedMessage id="not_yet_delivered" />
+                  </MessageAlert>
                 )}
               </List.Item>
               <Divider />
               <List.Item>
-                <Header as="h2">PAYMENT METHOD:</Header>
+                <Header as="h2">
+                  <FormattedMessage id="payment_method" />:
+                </Header>
                 <p>
-                  <strong>Payment Selected: </strong>
+                  <strong>
+                    <FormattedMessage id="selected_payment" />:{" "}
+                  </strong>
                   {order.payment_method}
                 </p>
                 {order.is_paid ? (
                   <MessageAlert color="green">
-                    Paid on {order.paid_at}
+                    <FormattedMessage id="paid_on" />: {order.paid_at}
                   </MessageAlert>
                 ) : (
-                  <MessageAlert color="yellow">Not Paid</MessageAlert>
+                  <MessageAlert color="yellow">
+                    <FormattedMessage id="not_yet_paid" />
+                  </MessageAlert>
                 )}
               </List.Item>
               <Divider />
               <List.Item>
                 <Header as="h2" className={styles.rightColHeader}>
-                  ORDER ITEMS:
+                  <FormattedMessage id="order_items" />:
                 </Header>
                 {order.orderItems.length === 0 ? (
-                  <MessageAlert color="red">Order is empty!</MessageAlert>
+                  <MessageAlert color="red">
+                    <FormattedMessage id="order_empty" />
+                  </MessageAlert>
                 ) : (
                   <List>
                     {order.orderItems.map((item, index) => (
@@ -195,32 +222,59 @@ function OrderPage({ match, history }) {
 
           <Grid.Column width={6}>
             <Card fluid>
-              <h2 className={styles.h2Summary}>ORDER SUMMARY</h2>
+              <h2 className={styles.h2Summary}>
+                <FormattedMessage id="order_summary" />
+              </h2>
               <List>
                 <List.Item>
                   <Grid celled>
                     <Grid.Row>
                       <Grid.Column width={8}>
-                        <h3>ITEMS :</h3>
+                        <h3>
+                          <FormattedMessage id="items" />:
+                        </h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${order.itemsPrice}</h4>
+                        <h4>
+                          {locale === "en-US" ? "$" : ""}{" "}
+                          <FormattedNumber
+                            value={order.itemsPrice}
+                            style={`currency`}
+                          />{" "}
+                          {locale === "fr-FR" ? "$" : ""}
+                        </h4>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                       <Grid.Column width={8}>
-                        <h3>SHIPPING:</h3>
+                        <h3>
+                          <FormattedMessage id="shipping" />:
+                        </h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${order.shipping_price}</h4>
+                        <h4>
+                          {locale === "en-US" ? "$" : ""}{" "}
+                          <FormattedNumber
+                            value={order.shipping_price}
+                            style={`currency`}
+                          />{" "}
+                          {locale === "fr-FR" ? "$" : ""}
+                        </h4>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                       <Grid.Column width={8}>
-                        <h3>TAX:</h3>
+                        <h3>TAXES:</h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${order.tax_price}</h4>
+                        <h4>
+                          {locale === "en-US" ? "$" : ""}{" "}
+                          <FormattedNumber
+                            value={order.tax_price}
+                            style={`currency`}
+                          />{" "}
+                          {locale === "fr-FR" ? "$" : ""}
+                        </h4>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -228,7 +282,14 @@ function OrderPage({ match, history }) {
                         <h3>TOTAL:</h3>
                       </Grid.Column>
                       <Grid.Column width={8}>
-                        <h4>${order.total_price}</h4>
+                        <h4>
+                          {locale === "en-US" ? "$" : ""}{" "}
+                          <FormattedNumber
+                            value={order.total_price}
+                            style={`currency`}
+                          />{" "}
+                          {locale === "fr-FR" ? "$" : ""}
+                        </h4>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
@@ -258,7 +319,7 @@ function OrderPage({ match, history }) {
                   !order.is_delivered && (
                     <List.Item>
                       <Button onClick={successDeliverHandle}>
-                        Mark as Delivered
+                        <FormattedMessage id="mark_delivered" />
                       </Button>
                     </List.Item>
                   )}
