@@ -19,7 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -27,7 +26,7 @@ import os
 SECRET_KEY = 'pa=e9=njy0ngnjft&j!l&zk77ta97#=c(b$igsfmz$sv(lj%d$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'au-jardin-de-may.herokuapp.com']
 

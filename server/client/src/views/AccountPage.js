@@ -11,10 +11,12 @@ import { getMyOrders } from "../actions/orderActions";
 
 import MessageAlert from "../components/MessageAlert";
 import LoaderSpin from "../components/LoaderSpin";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 
 const AccountPage = ({ history }) => {
   const locale = localStorage.getItem("locale");
+
+  const intl = useIntl();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -92,7 +94,7 @@ const AccountPage = ({ history }) => {
                 <Form.Field>
                   <input
                     required
-                    placeholder="Full Name"
+                    placeholder={intl.formatMessage({ id: "change_name" })}
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -101,7 +103,7 @@ const AccountPage = ({ history }) => {
                 <Form.Field>
                   <input
                     required
-                    placeholder="Your Email"
+                    placeholder={intl.formatMessage({ id: "change_email" })}
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -109,11 +111,7 @@ const AccountPage = ({ history }) => {
                 </Form.Field>
                 <Form.Field>
                   <input
-                    placeholder={
-                      locale === "fr-FR"
-                        ? "Changez Mot De Passe"
-                        : "Change Password"
-                    }
+                    placeholder={intl.formatMessage({ id: "change_password" })}
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -121,11 +119,7 @@ const AccountPage = ({ history }) => {
                 </Form.Field>
                 <Form.Field>
                   <input
-                    placeholder={
-                      locale === "fr-FR"
-                        ? "Confirmez Mot De Passe"
-                        : "Confirm Password"
-                    }
+                    placeholder={intl.formatMessage({ id: "confirm_password" })}
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
@@ -149,11 +143,19 @@ const AccountPage = ({ history }) => {
                   <Table.Header>
                     <Table.Row textAlign="center">
                       <Table.HeaderCell>ID</Table.HeaderCell>
-                      <Table.HeaderCell>Date</Table.HeaderCell>
-                      <Table.HeaderCell>Total</Table.HeaderCell>
-                      <Table.HeaderCell>Paid</Table.HeaderCell>
-                      <Table.HeaderCell>Delivered</Table.HeaderCell>
-                      <Table.HeaderCell>Details</Table.HeaderCell>
+                      <Table.HeaderCell>DATE</Table.HeaderCell>
+                      <Table.HeaderCell>
+                        <FormattedMessage id="amount_paid" />
+                      </Table.HeaderCell>
+                      <Table.HeaderCell>
+                        <FormattedMessage id="paid" />
+                      </Table.HeaderCell>
+                      <Table.HeaderCell>
+                        <FormattedMessage id="delivered" />
+                      </Table.HeaderCell>
+                      <Table.HeaderCell>
+                        <FormattedMessage id="details" />
+                      </Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
@@ -163,7 +165,14 @@ const AccountPage = ({ history }) => {
                         <Table.Cell>
                           {order.created_at.substring(0, 10)}
                         </Table.Cell>
-                        <Table.Cell>${order.total_price}</Table.Cell>
+                        <Table.Cell>
+                          {locale === "en-US" ? "$" : ""}{" "}
+                          <FormattedNumber
+                            value={order.total_price}
+                            style={`currency`}
+                          />{" "}
+                          {locale === "fr-FR" ? "$" : ""}{" "}
+                        </Table.Cell>
                         <Table.Cell>
                           {order.is_paid
                             ? order.paid_at.substring(0, 10)
@@ -181,7 +190,7 @@ const AccountPage = ({ history }) => {
                             as={Link}
                             to={`/order/${order._id}`}
                           >
-                            VIEW DETAILS
+                            <FormattedMessage id="details" />
                           </Button>
                         </Table.Cell>
                       </Table.Row>

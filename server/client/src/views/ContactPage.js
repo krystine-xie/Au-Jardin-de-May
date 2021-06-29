@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 
 import ContactGrid from "../components/ContactGrid/ContactGrid";
 
-const ContactPage = (props) => {
+const ContactPage = () => {
   return (
     <div>
       <div>

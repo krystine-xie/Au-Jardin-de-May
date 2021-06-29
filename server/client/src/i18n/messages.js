@@ -89,6 +89,8 @@ export const messages = {
     warning: "WARNING",
     error: "ERROR",
     success: "SUCCESS",
+    go_back: "Go Back",
+    cart_empty: "Your cart is empty",
 
     // product list
     price: "PRICE",
@@ -110,6 +112,7 @@ export const messages = {
     edit_product_category: "Edit Product Category",
     edit_product_stock: "Edit Product Stock",
     return_to_product_list: "Return to Product List",
+    select_category: "Select Category",
 
     // user list
     full_name: "FULL NAME",
@@ -139,6 +142,12 @@ export const messages = {
     delivered_on: "Delivered on",
     order_empty: "Your order is empty!",
     mark_delivered: "Mark as Delivered",
+
+    // user page
+    change_name: "Update Your Name",
+    change_email: "Update Your Email",
+    change_password: "Change Password",
+    confirm_password: "Confirm Password",
   },
 
   [LOCALES.FRENCH]: {
@@ -231,6 +240,8 @@ export const messages = {
     warning: "ATTENTION",
     error: "ERREUR",
     success: "SUCCÈS",
+    go_back: "Retourner",
+    cart_empty: "Votre panier est vide!",
 
     //liste de produit
     price: "PRIX",
@@ -252,6 +263,7 @@ export const messages = {
     edit_product_category: "Modifier la Catégorie du Produit",
     edit_product_stock: "Modifier le Stock du Produit",
     return_to_product_list: "Retourner à la Liste de Produits",
+    select_category: "Sélectionner la Catégorie",
 
     //liste d'utilisateur
     full_name: "NOM COMPLET",
@@ -281,5 +293,11 @@ export const messages = {
     delivered_on: "Livré le",
     order_empty: "Votre commande est vide!",
     mark_delivered: "Marquer Comme Livré",
+
+    // user page
+    change_name: "Changez Votre Nom",
+    change_email: "Changez Votre Email",
+    change_password: "Changez Mot De Passe",
+    confirm_password: "Confirmez Mot De Passe",
   },
 };

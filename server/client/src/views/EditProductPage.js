@@ -16,10 +16,10 @@ import {
 } from "../constants/productConstants";
 
 import styles from "./LoginForm.module.css";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function EditProductPage({ history, match }) {
-  const locale = localStorage.getItem("locale");
+  const intl = useIntl();
 
   const productId = match.params.id;
 
@@ -146,9 +146,7 @@ function EditProductPage({ history, match }) {
             defaultValue={category ? category : ""}
           >
             <option value="" disabled>
-              {locale === "fr-FR"
-                ? "Sélectionner la Catégorie"
-                : "Select Category"}
+              {intl.formatMessage({ id: "select_category" })}
             </option>
             <option value="Arrangement">Arrangement</option>
             <option value="Succulent">Succulent</option>

@@ -10,10 +10,12 @@ import styles from "./NavBar.module.css";
 
 // react-intl
 import { LOCALES } from "../../i18n/locales";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const NavBar = (props) => {
   const locale = localStorage.getItem("locale");
+
+  const intl = useIntl();
 
   const languages = [
     { name: "EN", code: LOCALES.ENGLISH },
@@ -77,7 +79,7 @@ const NavBar = (props) => {
       </Menu.Item>
       {userInfo && userInfo.isAdmin && (
         <Menu vertical borderless={true}>
-          <Dropdown item text={locale === "fr-FR" ? "ADMINISTRATEUR" : "ADMIN"}>
+          <Dropdown item text={intl.formatMessage({ id: "admin_user" })}>
             <Dropdown.Menu>
               <Dropdown.Item as={NavLink} to="/admin/userlist">
                 <FormattedMessage id="user_list" />

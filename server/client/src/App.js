@@ -47,21 +47,22 @@ function App() {
   const handleLanguageChange = (e) => {
     setCurrentLocale(e.target.value);
     localStorage.setItem("locale", e.target.value);
-  }
-
-  console.log(IntlProvider)
+  };
 
   return (
-    <IntlProvider 
-      messages={messages[currentLocale]} 
-      locale={locale} 
+    <IntlProvider
+      messages={messages[currentLocale]}
+      locale={locale}
       defaultLocale={LOCALES.ENGLISH}
     >
       <div className="App">
         <Router>
           <Segment basic padded>
             <Header />
-            <NavBar currentLocale={currentLocale} handleLanguageChange={handleLanguageChange} />
+            <NavBar
+              currentLocale={currentLocale}
+              handleLanguageChange={handleLanguageChange}
+            />
           </Segment>
           <Route path="/" exact render={() => <HomePage />} />
           <Route path="/store" exact render={() => <StorePage />} />
