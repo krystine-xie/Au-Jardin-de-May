@@ -9,10 +9,10 @@ import LoaderSpin from "../components/LoaderSpin";
 
 import styles from "./LoginForm.module.css";
 
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const LoginPage = ({ location, history }) => {
-  const locale = localStorage.getItem("locale");
+  const intl = useIntl();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,9 +47,7 @@ const LoginPage = ({ location, history }) => {
         <Form onSubmit={loginHandler}>
           <Form.Field>
             <input
-              placeholder={
-                locale === "fr-FR" ? "Votre Adresse Courriel" : "Your Email"
-              }
+              placeholder={intl.formatMessage({ id: "your_email" })}
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +56,7 @@ const LoginPage = ({ location, history }) => {
           <Form.Field>
             <input
               type="password"
-              placeholder={locale === "fr-FR" ? "Mot de Passe" : "Password"}
+              placeholder={intl.formatMessage({ id: "password" })}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

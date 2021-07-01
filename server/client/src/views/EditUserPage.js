@@ -14,7 +14,11 @@ import {
 
 import styles from "./LoginForm.module.css";
 
+import { FormattedMessage, useIntl } from "react-intl";
+
 function EditUserPage({ history, match }) {
+  const intl = useIntl();
+
   const userId = match.params.id;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -70,7 +74,9 @@ function EditUserPage({ history, match }) {
 
   return (
     <div className={styles.loginWrapper}>
-      <Header as="h1">EDIT USER</Header>
+      <Header as="h1">
+        <FormattedMessage id="edit_user" />
+      </Header>
       {updateLoading && <LoaderSpin />}
       {updateError && <MessageAlert>{updateError}</MessageAlert>}
       {error && <MessageAlert color="red">{error}</MessageAlert>}
@@ -78,7 +84,7 @@ function EditUserPage({ history, match }) {
       <Form onSubmit={updateHandler}>
         <Form.Field>
           <input
-            placeholder="Edit Full Name"
+            placeholder={intl.formatMessage({ id: "edit_user_name" })}
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -86,7 +92,7 @@ function EditUserPage({ history, match }) {
         </Form.Field>
         <Form.Field>
           <input
-            placeholder="Edit User Email"
+            placeholder={intl.formatMessage({ id: "edit_user_email" })}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -94,16 +100,20 @@ function EditUserPage({ history, match }) {
         </Form.Field>
         <Form.Field>
           <Checkbox
-            label="Make Admin"
+            label={intl.formatMessage({ id: "make_admin" })}
             checked={isAdmin}
             onChange={(e) => setIsAdmin(!isAdmin)}
           />
         </Form.Field>
-        <Button type="submit">Edit User</Button>
+        <Button type="submit">
+          <FormattedMessage id="update_details" />
+        </Button>
       </Form>
       <br />
 
-      <Link to="/admin/userlist">Go Back to User List</Link>
+      <Link to="/admin/userlist">
+        <FormattedMessage id="return_to_user_list" />
+      </Link>
     </div>
   );
 }

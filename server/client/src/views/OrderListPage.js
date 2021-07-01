@@ -9,9 +9,11 @@ import MessageAlert from "../components/MessageAlert";
 import { getAllOrders } from "../actions/orderActions";
 
 import styles from "./UserListPage.module.css";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 
 function OrderListPage({ history }) {
+  const locale = localStorage.getItem("locale");
+
   const dispatch = useDispatch();
   const orderList = useSelector((state) => state.allOrders);
   const { loading, error, orders } = orderList;
@@ -63,7 +65,14 @@ function OrderListPage({ history }) {
                 <Table.Cell>{order._id}</Table.Cell>
                 <Table.Cell>{order.user && order.user.name}</Table.Cell>
                 <Table.Cell>{order.created_at.substring(0, 10)}</Table.Cell>
-                <Table.Cell>${order.total_price}</Table.Cell>
+                <Table.Cell>
+                  {locale === "en-US" ? "$" : ""}{" "}
+                  <FormattedNumber
+                    value={order.total_price}
+                    style={`currency`}
+                  />{" "}
+                  {locale === "fr-FR" ? "$" : ""}{" "}
+                </Table.Cell>
                 <Table.Cell>
                   {order.is_paid ? (
                     <Icon name="check" color="green" size="large" />

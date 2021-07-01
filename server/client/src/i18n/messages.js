@@ -43,6 +43,9 @@ export const messages = {
     lets_chat: "👋🏽 Hi there! Let's chat. 🌺",
     your_queries: "YOUR QUERIES",
     location: "Mountain View, California",
+    your_name: "Your Name",
+    your_email: "Your Email",
+    your_message: "Your Message",
 
     // buttons
     submit_button: "SUBMIT",
@@ -60,6 +63,7 @@ export const messages = {
 
     // login page
     welcome: "Welcome!",
+    password: "Password",
     no_account: "Don't have an account?",
     have_account: "Have an account?",
     sign_up: "SIGN UP",
@@ -91,6 +95,11 @@ export const messages = {
     success: "SUCCESS",
     go_back: "Go Back",
     cart_empty: "Your cart is empty",
+    passwords_not_match: "Your passwords do not match!",
+    search_item: "Search...",
+
+    // checkout progress
+    payment: "PAYMENT",
 
     // product list
     price: "PRICE",
@@ -101,6 +110,13 @@ export const messages = {
     paid: "PAID",
     delivered: "DELIVERED",
     details: "DETAILS",
+
+    // edit user
+    edit_user: "Edit User",
+    edit_user_name: "Edit User Name",
+    edit_user_email: "Edit User Email",
+    make_admin: "Make Admin",
+    return_to_user_list: "Go Back to User List",
 
     // edit product
     edit_product: "Edit Product",
@@ -117,9 +133,15 @@ export const messages = {
     // user list
     full_name: "FULL NAME",
     email: "EMAIL",
+    confirm_delete: "Are you sure you want to delete user {n, number}?",
 
     // shipping
     enter_shipping_address: "ENTER SHIPPING ADDRESS",
+    address: "Address",
+    city: "City",
+    zip_code: "Zip Code",
+    country: "Country",
+    select_state: "Select State: ",
 
     //payment
     select_payment: "SELECT PAYMENT METHOD",
@@ -194,6 +216,9 @@ export const messages = {
     lets_chat: "👋🏽 Salut! On jase. 🌺",
     your_queries: "VOS REQUÊTES",
     location: "Mountain View, Californie",
+    your_name: "Votre Nom",
+    your_email: "Votre Adresse Couriel",
+    your_message: "Votre Message",
 
     // les boutons
     submit_button: "SOUMETTRE",
@@ -211,6 +236,7 @@ export const messages = {
 
     // login page
     welcome: "Bienvenue!",
+    password: "Votre Mot De Passe",
     no_account: "Pas de compte?",
     have_account: "Vous avez déjà un compte ?",
     sign_up: "ENREGISTRER",
@@ -242,6 +268,11 @@ export const messages = {
     success: "SUCCÈS",
     go_back: "Retourner",
     cart_empty: "Votre panier est vide!",
+    passwords_not_match: "Les mots de passe ne correspondent pas!",
+    search_item: "Rechercher...",
+
+    // checkout progress
+    payment: "PAIEMENT",
 
     //liste de produit
     price: "PRIX",
@@ -265,12 +296,26 @@ export const messages = {
     return_to_product_list: "Retourner à la Liste de Produits",
     select_category: "Sélectionner la Catégorie",
 
+    // edit user
+    edit_user: "Modifier l'Utilisateur",
+    edit_user_name: "Modifier Nom de l'Utilisateur",
+    edit_user_email: "Modifier Adresse Couriel de l'Utilisateur",
+    make_admin: "Faire Administrateur",
+    return_to_user_list: "Retourner à la Liste d'Utilisateur",
+
     //liste d'utilisateur
     full_name: "NOM COMPLET",
     email: "ADRESSE COURRIEL",
+    confirm_delete:
+      "Êtes-vous sur de vouloir supprimer l'utilisateur {n, number}?",
 
     // shipping
     enter_shipping_address: "SAISIR L'ADRESSE DE LIVRAISON",
+    address: "Adresse",
+    city: "Ville",
+    zip_code: "Code Postale",
+    country: "Pays",
+    select_state: "Sélectionez l'État: ",
 
     //payment
     select_payment: "CHOISIR MÉTHODE DE PAIEMENT",

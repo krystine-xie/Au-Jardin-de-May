@@ -7,9 +7,11 @@ import CheckoutProgress from "../components/CheckoutProgress";
 import styles from "./LoginForm.module.css";
 import states from "../constants/states";
 import { saveShippingAddress } from "../actions/cartActions";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function ShippingPage({ history }) {
+  const intl = useIntl();
+
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
@@ -21,13 +23,10 @@ function ShippingPage({ history }) {
 
   const dispatch = useDispatch();
 
-  const locale = localStorage.getItem("locale");
-
   const shippingHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({ address, city, zipCode, state1, country }));
     history.push("/payment");
-    // console.log(state);
   };
 
   return (
@@ -42,7 +41,7 @@ function ShippingPage({ history }) {
             <input
               required
               name="address"
-              placeholder={locale === "fr-FR" ? "Adresse" : "Enter Address"}
+              placeholder={intl.formatMessage({ id: "address" })}
               type="text"
               value={address ? address : ""}
               onChange={(e) => setAddress(e.target.value)}
@@ -52,7 +51,7 @@ function ShippingPage({ history }) {
             <input
               required
               name="city"
-              placeholder={locale === "fr-FR" ? "Ville" : "Enter City"}
+              placeholder={intl.formatMessage({ id: "city" })}
               type="text"
               value={city ? city : ""}
               onChange={(e) => setCity(e.target.value)}
@@ -65,7 +64,7 @@ function ShippingPage({ history }) {
               defaultValue={state1 ? state1 : ""}
             >
               <option value="" disabled>
-                {locale === "fr-FR" ? "Sélectionnez l'État:" : "Select State:"}
+                {intl.formatMessage({ id: "select_state" })}
               </option>
               {states.map((s, key) => {
                 return (
@@ -80,9 +79,7 @@ function ShippingPage({ history }) {
             <input
               required
               name="zipCode"
-              placeholder={
-                locale === "fr-FR" ? "Code Postale" : "Enter Zip Code"
-              }
+              placeholder={intl.formatMessage({ id: "zip_code" })}
               type="text"
               value={zipCode ? zipCode : ""}
               onChange={(e) => setZipCode(e.target.value)}
@@ -92,7 +89,7 @@ function ShippingPage({ history }) {
             <input
               required
               name="country"
-              placeholder={locale === "fr-FR" ? "Pays" : "Enter Country"}
+              placeholder={intl.formatMessage({ id: "country" })}
               type="text"
               value={country ? country : ""}
               onChange={(e) => setCountry(e.target.value)}

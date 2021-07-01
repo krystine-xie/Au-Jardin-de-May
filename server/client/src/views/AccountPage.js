@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form, Segment, Grid, Table } from "semantic-ui-react";
+import { Button, Form, Segment, Grid, Table, Icon } from "semantic-ui-react";
 import { withRouter, Link } from "react-router-dom";
 import styles from "./AccountPage.module.css";
 
@@ -65,7 +65,7 @@ const AccountPage = ({ history }) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match!");
+      setMessage(intl.formatMessage({ id: "passwords_not_match" }));
     } else {
       dispatch(
         updateUserDetails({
@@ -174,14 +174,18 @@ const AccountPage = ({ history }) => {
                           {locale === "fr-FR" ? "$" : ""}{" "}
                         </Table.Cell>
                         <Table.Cell>
-                          {order.is_paid
-                            ? order.paid_at.substring(0, 10)
-                            : "Not Paid"}
+                          {order.is_paid ? (
+                            <Icon name="check" color="green" size="large" />
+                          ) : (
+                            <Icon name="x" color="red" size="large" />
+                          )}
                         </Table.Cell>
                         <Table.Cell>
-                          {order.delivered_at
-                            ? order.delivered_at
-                            : "Not Yet Delivered"}
+                          {order.is_delivered ? (
+                            <Icon name="check" color="green" size="large" />
+                          ) : (
+                            <Icon name="x" color="red" size="large" />
+                          )}
                         </Table.Cell>
                         <Table.Cell>
                           <Button

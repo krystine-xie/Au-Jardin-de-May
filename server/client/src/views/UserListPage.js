@@ -10,9 +10,11 @@ import { Link, withRouter } from "react-router-dom";
 
 import styles from "./UserListPage.module.css";
 
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function UserListPage({ history }) {
+  const intl = useIntl();
+
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.userList);
   const { loading, error, userList: users } = userList;
@@ -32,7 +34,9 @@ function UserListPage({ history }) {
   }, [dispatch, history, successDelete, userInfo]);
 
   const deleteUserHandle = (id) => {
-    if (window.confirm(`Are you sure you want to delete user ${id}?`)) {
+    if (
+      window.confirm(intl.formatMessage({ id: "confirm_delete", n: { id } }))
+    ) {
       dispatch(deleteUser(id));
     }
   };

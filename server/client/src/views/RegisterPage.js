@@ -8,10 +8,10 @@ import { register } from "../actions/userActions";
 
 import MessageAlert from "../components/MessageAlert";
 import LoaderSpin from "../components/LoaderSpin";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const RegisterPage = ({ location, history }) => {
-  const locale = localStorage.getItem("locale");
+  const intl = useIntl();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,7 +36,7 @@ const RegisterPage = ({ location, history }) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match!");
+      setMessage(intl.formatMessage({ id: "passwords_not_match" }));
     } else {
       dispatch(register(name, email, password));
     }
@@ -54,7 +54,7 @@ const RegisterPage = ({ location, history }) => {
         <Form.Field>
           <input
             required
-            placeholder={locale === "fr-FR" ? "Nom Complet" : "Full Name"}
+            placeholder={intl.formatMessage({ id: "your_name" })}
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -63,9 +63,7 @@ const RegisterPage = ({ location, history }) => {
         <Form.Field>
           <input
             required
-            placeholder={
-              locale === "fr-FR" ? "Votre Adresse Courriel" : "Your Email"
-            }
+            placeholder={intl.formatMessage({ id: "your_email" })}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +72,7 @@ const RegisterPage = ({ location, history }) => {
         <Form.Field>
           <input
             required
-            placeholder={locale === "fr-FR" ? "Mot de Passe" : "Password"}
+            placeholder={intl.formatMessage({ id: "password" })}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -83,9 +81,7 @@ const RegisterPage = ({ location, history }) => {
         <Form.Field>
           <input
             required
-            placeholder={
-              locale === "fr-FR" ? "Confirmez Mot de Passe" : "Confirm Password"
-            }
+            placeholder={intl.formatMessage({ id: "confirm_password" })}
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}

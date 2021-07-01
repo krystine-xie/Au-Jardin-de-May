@@ -2,7 +2,11 @@ import React from "react";
 import { Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 
+import { useIntl } from "react-intl";
+
 function CheckoutProgress({ step1, step2, step3, step4 }) {
+  const intl = useIntl();
+
   const locale = localStorage.getItem("locale");
   return (
     <Menu fluid widths={4}>
@@ -10,52 +14,40 @@ function CheckoutProgress({ step1, step2, step3, step4 }) {
         <Menu.Item
           as={NavLink}
           to="/login"
-          name={locale === "fr-FR" ? "OUVRIR UNE SESSION" : "LOGIN"}
+          name={intl.formatMessage({ id: "login" })}
         />
       ) : (
-        <Menu.Item
-          disabled
-          name={locale === "fr-FR" ? "OUVRIR UNE SESSION" : "LOGIN"}
-        />
+        <Menu.Item disabled name={intl.formatMessage({ id: "login" })} />
       )}
 
       {step2 ? (
         <Menu.Item
           as={NavLink}
           to="/shipping"
-          name={locale === "fr-FR" ? "LIVRAISON" : "SHIPPING"}
+          name={intl.formatMessage({ id: "shipping" })}
         />
       ) : (
-        <Menu.Item
-          disabled
-          name={locale === "fr-FR" ? "LIVRAISON" : "SHIPPING"}
-        />
+        <Menu.Item disabled name={intl.formatMessage({ id: "shipping" })} />
       )}
 
       {step3 ? (
         <Menu.Item
           as={NavLink}
           to="/payment"
-          name={locale === "fr-FR" ? "PAIEMENT" : "PAYMENT"}
+          name={intl.formatMessage({ id: "payment" })}
         />
       ) : (
-        <Menu.Item
-          disabled
-          name={locale === "fr-FR" ? "PAIEMENT" : "PAYMENT"}
-        />
+        <Menu.Item disabled name={intl.formatMessage({ id: "payment" })} />
       )}
 
       {step4 ? (
         <Menu.Item
           as={NavLink}
           to="/placeorder"
-          name={locale === "fr-FR" ? "PASSER LA COMMANDE" : "PLACE ORDER"}
+          name={intl.formatMessage({ id: "place_order" })}
         />
       ) : (
-        <Menu.Item
-          disabled
-          name={locale === "fr-FR" ? "PASSER LA COMMANDE" : "PLACE ORDER"}
-        />
+        <Menu.Item disabled name={intl.formatMessage({ id: "place_order" })} />
       )}
     </Menu>
   );

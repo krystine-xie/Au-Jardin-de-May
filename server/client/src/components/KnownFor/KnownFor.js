@@ -5,7 +5,7 @@ import styles from "./KnownFor.module.css";
 
 import { FormattedMessage } from "react-intl";
 
-const KnownFor = (props) => {
+const KnownFor = () => {
   return (
     <div className={styles.wrapper}>
       <h1>

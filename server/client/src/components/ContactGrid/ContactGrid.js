@@ -3,10 +3,11 @@ import { Grid, Icon, Form, Button } from "semantic-ui-react";
 
 import styles from "./ContactGrid.module.css";
 
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const ContactGrid = () => {
-  const locale = localStorage.getItem("locale");
+  const intl = useIntl();
+
   return (
     <div className={styles.wrapper}>
       <Grid columns={2} divided>
@@ -41,23 +42,19 @@ const ContactGrid = () => {
               <Form.Field>
                 <input
                   name="name"
-                  placeholder={locale === "fr-FR" ? "Votre Nom" : "Your Name"}
+                  placeholder={intl.formatMessage({ id: "your_name" })}
                 />
               </Form.Field>
               <Form.Field>
                 <input
                   name="email"
-                  placeholder={
-                    locale === "fr-FR" ? "Votre Adresse Courriel" : "Your Email"
-                  }
+                  placeholder={intl.formatMessage({ id: "your_email" })}
                 />
               </Form.Field>
               <textarea
                 className={styles.textarea}
                 name="message"
-                placeholder={
-                  locale === "fr-FR" ? "Votre Message" : "Your Message"
-                }
+                placeholder={intl.formatMessage({ id: "your_message" })}
               />
               <Form.Field></Form.Field>
               <Button type="submit">

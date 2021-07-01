@@ -13,8 +13,6 @@ import { LOCALES } from "../../i18n/locales";
 import { FormattedMessage, useIntl } from "react-intl";
 
 const NavBar = (props) => {
-  const locale = localStorage.getItem("locale");
-
   const intl = useIntl();
 
   const languages = [
